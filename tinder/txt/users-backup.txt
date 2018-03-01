@@ -1,0 +1,34 @@
+[
+  {
+    "id" : "1",
+    "firstName" : "Casper",
+    "lastName" : "Farver",
+    "city" : "København",
+    "phoneNumber" : "12345678",
+    "email" : "casperfarver.kea@gmail.com",
+    "userName" : "CFarver",
+    "password" : "Casper1",
+    "imageSet" : true,
+    "imageURL" : "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAIA_wDGAAAAAQAAAAAAAA2PAAAAJDMyMjZiYTA1LWE1YjQtNGFlOC1iOTIxLTA5ZWJkYjdhZTU3Mw.jpg",
+    "verification" : false,
+    "verificationString" : "V1s",
+    "likes" : [],
+    "currentlyWatching" : ""
+  },
+  {
+  "id" : "2",
+  "firstName" : "Rikke",
+  "lastName" : "Holt",
+  "city" : "København",
+  "phoneNumber" : "22334455",
+  "email" : "nullebul@gmail.com",
+  "userName" : "RHolt",
+  "password" : "Rikke1",
+  "imageSet" : true,
+  "imageURL" : "https://media.licdn.com/media/AAEAAQAAAAAAAAJwAAAAJDYyMGI3NzFjLTcyYTctNDFjNy04NzFlLTVhYjZjYTQ4M2YwZQ.jpg",
+  "verification" : false,
+  "verificationString" : "V2s",
+  "likes" : [],
+  "currentlyWatching" : ""
+  }
+]
