@@ -2,7 +2,7 @@
   {
     "firstName" : "Casper",
     "imageURL" : "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAIA_wDGAAAAAQAAAAAAAA2PAAAAJDMyMjZiYTA1LWE1YjQtNGFlOC1iOTIxLTA5ZWJkYjdhZTU3Mw.jpg",
-    "description" : "Awesome website. Met a lot of very nice people here! I can definitely say, that 1 like can change your life",
-    "recommendation" : 5
+    "description" : "Awesome website. Met a lot of very nice people here! I can definitely say, that 1 like can change your life!",
+    "recommendation" : 4
   }
 ]
