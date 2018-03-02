@@ -6,6 +6,14 @@ $(document).ready(function() {
     "dataType" : "JSON",
   }).done(function(data){
     
+    //Shuffles the array
+    var shuffledArray = data.sort(function() {
+      return .5 - Math.random();
+    });
+
+    //Selects 3 elements: 0, 1 & 2
+    var selectedElements = shuffledArray.slice(0, 3);
+    
     //Template - {{}} is a placeholder
     var sTemplate = `
                       <div class="card" style="width: 18rem;">
@@ -13,13 +21,13 @@ $(document).ready(function() {
                         <div class="card-body">
                           <h5 class="card-title">{{firstName}}</h5>
                           <p class="card-text">{{description}}</p>
-                          <img src="{{recommendation}}" alt="recommendation">
+                          <img class="img-recommendation" src="{{recommendation}}" alt="recommendation">
                         </div>
                       </div>
                     `;
 
     //Looping through the first 3 in the recommendation list                
-    for (i = 0; i < data.length; i++) {
+    for (i = 0; i < 3; i++) {
       
       //Copy of the template
       var sTemplateCopy = sTemplate;
@@ -50,10 +58,6 @@ $(document).ready(function() {
           break;
         default:
           sTemplateCopy = sTemplateCopy.replace( '{{recommendation}}', '#');  
-      }
-      
-      if (data[i].recommendation == 5) {
-        sTemplateCopy = sTemplateCopy.replace( '{{recommendation}}', '../tinder/img/5-stars.png');    
       }
 
       //Append the sTemplateCopy to the div with id

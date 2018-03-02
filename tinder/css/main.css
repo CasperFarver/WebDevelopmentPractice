@@ -1,0 +1,39 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(219, 240, 240);
+}
+
+/* 'users' div */
+#users {
+  display: flex;
+  height: 100%;
+  justify-content: center; /* Center items on main-axis */
+  align-items: center; /* Center items on cross-axis */
+}
+
+/* The entire card */
+.card {
+  margin: 15px;
+}
+
+/* Body of the card */
+.card-body {
+  min-height: 250px;
+}
+
+/* Card text paragraph */
+.card-text {
+  min-height: 100px;
+}
+
+/* Recommendation stars in cards */
+.img-recommendation{
+  width: 100%;
+}
+
+#btn-login {
+  margin-left: 15px;
+}

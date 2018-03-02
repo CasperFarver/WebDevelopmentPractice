@@ -3,6 +3,24 @@
     "firstName" : "Casper",
     "imageURL" : "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAIA_wDGAAAAAQAAAAAAAA2PAAAAJDMyMjZiYTA1LWE1YjQtNGFlOC1iOTIxLTA5ZWJkYjdhZTU3Mw.jpg",
     "description" : "Awesome website. Met a lot of very nice people here! I can definitely say, that 1 like can change your life!",
+    "recommendation" : 5
+  },
+  {
+    "firstName" : "Rikke",
+    "imageURL" : "https://media.licdn.com/media/AAEAAQAAAAAAAAJwAAAAJDYyMGI3NzFjLTcyYTctNDFjNy04NzFlLTVhYjZjYTQ4M2YwZQ.jpg",
+    "description" : "My fiance is extremely hot! Did not find here through this website though.",
     "recommendation" : 4
+  },
+  {
+    "firstName" : "Daniel",
+    "imageURL" : "https://media.licdn.com/dms/image/C4D03AQEsR9xfTNM4mg/profile-displayphoto-shrink_800_800/0?e=1525186800&v=alpha&t=x6Y6qbHhxlJGZipkHwwaSXCtDAUKxt5g2Y30eHCaspE",
+    "description" : "I am going to be the best man to Casper and Rikkes wedding. Wohoo. Lucky me.",
+    "recommendation" : 3
+  },
+  {
+    "firstName" : "Mike",
+    "imageURL" : "https://media.licdn.com/dms/image/C4E03AQGrUUE0bx2ZTw/profile-displayphoto-shrink_800_800/0?e=1525186800&v=alpha&t=fLVPPDuoMGVT-ytqicgsvn4vMPDlsiaCBwh_fZi6G3U",
+    "description" : "Not bad. But not perfect at all either.",
+    "recommendation" : 2
   }
 ]
