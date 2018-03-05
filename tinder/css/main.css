@@ -9,7 +9,16 @@ html, body {
 /* 'users' div */
 #users {
   display: flex;
-  height: 100%;
+
+  /* Firefox */
+  height: -moz-calc(100% - 40px);
+  /* WebKit */
+  height: -webkit-calc(100% - 40px);
+  /* Opera */
+  height: -o-calc(100% - 40px);
+  /* Standard */
+  height: calc(100% - 40px);
+
   justify-content: center; /* Center items on main-axis */
   align-items: center; /* Center items on cross-axis */
 }
