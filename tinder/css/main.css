@@ -43,6 +43,7 @@ html, body {
   width: 100%;
 }
 
+/* Login button in navbar */
 #btn-login {
   margin-left: 15px;
 }

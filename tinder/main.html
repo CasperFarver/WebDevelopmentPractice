@@ -22,15 +22,73 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto"></ul>
             <form class="form-inline my-2 my-lg-0">
-              <button class="btn btn-outline-primary my-2 my-sm-0" type="button">Signup</button>
-              <button id="btn-login" class="btn btn-outline-success my-2 my-sm-0" type="button">Login</button>
+              <button id="btn-signup" class="btn btn-outline-primary my-2 my-sm-0" type="button" data-toggle="modal" data-target="#signup-modal">Signup</button>
+              <button id="btn-login" class="btn btn-outline-success my-2 my-sm-0" type="button" data-toggle="modal" data-target="#login-modal">Login</button>
             </form>
           </div>
         </div>
       </nav>
 
     <div id="users"></div>
+    
+    <!-- Login Modal -->
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modal-label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="login-modal-label">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="">
+            <div class="modal-body">
+              <div class="form-group">
+                  <label for="input-username">Username</label>
+                  <input type="text" class="form-control" id="input-username" placeholder="Enter username">
+              </div>
+              <div class="form-group">
+                <label for="input-password">Password</label>
+                <input type="password" class="form-control" id="input-password" placeholder="Enter password">
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="remember-me-check">
+                <label class="form-check-label" for="remember-me-check">Remember me</label>
+                <div id="test" class="text-right">
+                  <!-- TODO: align link with checkbox and label but just to the right -->
+                  <a href="#">Forgot password?</a>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#signup-modal">Need an account?</a>
+              <button type="button" class="btn btn-primary">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="signup-modal-label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="signup-modal-label">Signup</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#login-modal">Already have an account?</a>
+              <button type="button" class="btn btn-success">Signup</button>
+            </div>
+          </div>
+        </div>
+      </div>
     
       
     <!-- Optional JavaScript -->
