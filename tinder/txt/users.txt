@@ -8,9 +8,9 @@
     "email" : "casperfarver.kea@gmail.com",
     "username" : "CFarver",
     "password" : "Casper1",
-    "imageSet" : true,
+    "imageSet" : false,
     "imageURL" : "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAIA_wDGAAAAAQAAAAAAAA2PAAAAJDMyMjZiYTA1LWE1YjQtNGFlOC1iOTIxLTA5ZWJkYjdhZTU3Mw.jpg",
-    "verification" : false,
+    "verification" : true,
     "verificationString" : "V1s",
     "likes" : [],
     "currentlyWatching" : ""

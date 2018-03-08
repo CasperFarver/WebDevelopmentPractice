@@ -47,3 +47,8 @@ html, body {
 #btn-login {
   margin-left: 15px;
 }
+
+/* Sweet Alert buttons */
+.swal-button--confirm {
+  background-color: #007bff;
+}
