@@ -1,12 +1,15 @@
 <?php
 //File that handles the login process of the user
+  
+  session_start();
+
   $sFileName = '../txt/users.txt';
 
   $sUsername = $_POST['username'];
   $sPassword = $_POST['password'];
 
   //If username and password field is set = NOT empty
-  if(!empty($sUsername) && !empty($sPassword)) {
+  if(isset($_SESSION['id']) && !empty($sUsername) && !empty($sPassword)) {
     
     //echo 'Okay a username and password has been filled out';   //Only for test
     

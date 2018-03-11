@@ -1,6 +1,8 @@
 <?php
 //Validate the login information
 
+  session_start();
+
   $sFileName = '../txt/users.txt';
 
   $sUsername = $_POST['username'];
@@ -17,6 +19,7 @@
       if($ajUsers[$i]->username == $sUsername && $ajUsers[$i]->password == $sPassword) {
           
           if($ajUsers[$i]->verification == true) {
+            $_SESSION['id'] = $ajUsers[$i]->id;
             echo '{"status" : "success", "message" : "Username and password match is found"}';
             exit;
           } else {

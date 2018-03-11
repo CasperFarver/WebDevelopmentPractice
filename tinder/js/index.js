@@ -134,7 +134,7 @@ $(document).ready(function() {
 
         swal({
           title: "Success!",
-          text: "You have successfully been logged in",
+          text: "You have successfully been logged in.",
           icon: "success",
           timer: 2500,
           buttons: false
@@ -142,7 +142,7 @@ $(document).ready(function() {
             //TODO: Redirect to user-profile page
             //Need to start a session somewhere
             //Need to bring the userID along aswell somehow
-            window.location.href = '';
+            window.location.href = '../tinder/user-index.php';
         }); 
 
       } else if(data.status == 'pending'){
@@ -150,7 +150,7 @@ $(document).ready(function() {
 
           swal({
             title: "Activation required!",
-            text: "You need to activate your account through the link we sent you in an email during the signup process. ",
+            text: "You need to activate your account.",
             icon: "info",
             button: "Roger that!"
           });
@@ -169,9 +169,43 @@ $(document).ready(function() {
       }
     }).fail(function() {
       console.log('{"status" : "error", "message" : "Some error occured in backend"}');
+
+      //Sweet Alert
+      swal({
+        title: "Error!",
+        text: "An error occured on the server - Try again later.",
+        icon: "error",
+        button: "Okay"
+      });
+
     });
   }
 
+  //Function for remember me checkbox - functionality
+  $(function() {
+    if(localStorage.chkbx && localStorage.chkbx != '') {
+      $('#remember-me-check').attr('checked', 'checked');
+      $('#input-login-username').val(localStorage.username);
+      $('#input-login-password').val(localStorage.password);
+    } else {
+      $('#remember-me-check').removeAttr('checked');
+      $('#input-login-username').val('');
+      $('#input-login-password').val('');
+    }
+
+    $('#remember-me-check').click(function() {
+      if($('#remember-me-check').is(':checked')) {
+        //Save username and password
+        localStorage.username = $('#input-login-username').val();
+        localStorage.password = $('#input-login-password').val();
+        localStorage.chkbx = $('#remember-me-check').val();
+      } else {
+        localStorage.username = '';
+        localStorage.password = '';
+        localStorage.chkbx = '';
+      }
+    });
+  });
   
 });
 

@@ -1,6 +1,9 @@
 <?php
   //API for getting all the users
   
+  //Start a session - used in all PHP files that are required when logged in
+  session_start();
+
   $sFileName = '../txt/users.txt';
   
   $sajUsers = file_get_contents($sFileName);
