@@ -21,7 +21,7 @@
   "lastName" : "Holt",
   "city" : "København",
   "phoneNumber" : "22334455",
-  "email" : "nullebul@gmail.com",
+  "email" : "casperfarver@hotmail.com",
   "username" : "RHolt",
   "password" : "Rikke1",
   "imageSet" : true,

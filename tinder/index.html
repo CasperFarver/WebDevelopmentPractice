@@ -56,7 +56,7 @@
                 <label class="form-check-label" for="remember-me-check">Remember me</label>
                 <div class="text-right">
                   <!-- TODO: align link with checkbox and label but just to the right -->
-                  <a href="#">Forgot password?</a>
+                  <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#forgot-password-modal">Forgot password?</a>
                 </div>
               </div>
             </div>
@@ -71,24 +71,49 @@
 
     <!-- Signup Modal -->
     <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="signup-modal-label" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="signup-modal-label">Signup</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              
-            </div>
-            <div class="modal-footer">
-              <a href="#" class="mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#login-modal">Already have an account?</a>
-              <button type="button" class="btn btn-success">Signup</button>
-            </div>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="signup-modal-label">Signup</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body"> 
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#login-modal">Already have an account?</a>
+            <button type="button" class="btn btn-success">Signup</button>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal fade" id="forgot-password-modal" tabindex="-1" role="dialog" aria-labelledby="forgot-password-modal-label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="forgot-password-modal-label">Forgot password</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form id="frm-forgot-password">
+            <div class="modal-body">
+              <div class="form-group">
+                  <label for="input-forgot-password">Enter username or email</label>
+                  <input type="text" name="forgot-password" class="form-control" id="input-forgot-password" placeholder="Username or Email" required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#login-modal">Back to login</a>
+              <button type="submit" class="btn btn-info">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
     
       
     <!-- Optional JavaScript -->

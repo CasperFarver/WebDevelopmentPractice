@@ -83,10 +83,16 @@ $(document).ready(function() {
     validatePassword();
   });
 
-  //On submit, call/run the validateLogin()
+  //On submit for frm-login
   $('#frm-login').submit(function(event) {
-    validateLogin();
     event.preventDefault();
+    validateLogin();
+  });
+
+  //On submit for frm-forgot-password
+  $('#frm-forgot-password').submit(function(event) {
+    event.preventDefault();
+    forgotPassword();
   });
 
   //FUNCTIONS
@@ -179,9 +185,50 @@ $(document).ready(function() {
       });
 
     });
-  }
+  };
 
-  //Function for remember me checkbox - functionality
+  //Forgot password
+  function forgotPassword() {
+    
+    var form = $('#frm-forgot-password');
+
+    $.ajax({
+      "method" : "POST",
+      "url" : "../tinder/api/forgot-password.php",
+      "data" : form.serialize(),
+      "dataType" : "JSON",
+    }).done(function(data) {
+      console.log(data);    //Only for test
+
+      if(data.status == 'success') {
+        
+        //Sweet Alert
+        swal({
+          title: "Email has been sent",
+          text: "An email to reset password has been sent",
+          icon: "success",
+          button: "Okay"
+        }).then(function() {
+          //Closes modal
+          $('#forgot-password-modal').modal('hide');
+        })
+      } else {
+
+        //Sweet Alert
+        swal({
+          title: "Error",
+          text: "No user with that username/email exists",
+          icon: "error",
+          button: "Try agian"
+        })
+      }
+
+    }).fail(function() {
+      console.log('{"status" : "error", "message" : "Some error occured when we tried to send a reset email"}');
+    });
+  };
+
+  //Remember me checkbox - functionality
   $(function() {
     if(localStorage.chkbx && localStorage.chkbx != '') {
       $('#remember-me-check').attr('checked', 'checked');
