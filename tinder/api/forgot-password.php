@@ -65,7 +65,9 @@
 
             //TODO: Set new password for user and update it to text file.
             //But keep all other fields for the user, as they are.
-            
+            $ajUsers[$i]->password = $sNewPassword;
+
+            file_put_contents($sFileName, json_encode($ajUsers));
 
             // var_dump($mail);
             $mail->send();
