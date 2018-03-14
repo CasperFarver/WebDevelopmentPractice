@@ -53,7 +53,7 @@
 
   } else {
       echo '{"status" : "error", "message" : "Username or password was not field out"}';
-      header('refresh: 3; url=http://localhost:8888/tinder/');
+      header('refresh: 3; url=http://localhost:8888/WebDevelopmentPractice/tinder/');
       exit;
   }
 

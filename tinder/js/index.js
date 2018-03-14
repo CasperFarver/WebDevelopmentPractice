@@ -225,6 +225,15 @@ $(document).ready(function() {
 
     }).fail(function() {
       console.log('{"status" : "error", "message" : "Some error occured when we tried to send a reset email"}');
+
+      //Sweet Alert
+      swal({
+        title: "Error!",
+        text: "An error occured on the server - Try again later.",
+        icon: "error",
+        button: "Okay"
+      });
+
     });
   };
 

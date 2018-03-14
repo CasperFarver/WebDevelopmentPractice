@@ -79,12 +79,34 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body"> 
-          </div>
-          <div class="modal-footer">
-            <a href="#" class="mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#login-modal">Already have an account?</a>
-            <button type="button" class="btn btn-success">Signup</button>
-          </div>
+          <form id="frm-signup">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="input-signup-firstname">First name</label>
+                <input type="text" name="firstName" class="form-control" id="input-signup-firstname" placeholder="Hans" required>
+              </div>
+              <div class="form-group">
+                  <label for="input-signup-lastname">First name</label>
+                  <input type="text" name="lastName" class="form-control" id="input-signup-lastname" placeholder="Hansen" required>
+              </div>
+              <div class="form-group">
+                  <label for="input-signup-phonenumber">Phone number</label>
+                  <input type="number" name="phoneNumber" class="form-control" id="input-signup-phonenumber" placeholder="12345678" required>
+              </div>
+              <div class="form-group">
+                  <label for="input-signup-email">Email</label>
+                  <input type="email" name="email" class="form-control" id="input-signup-email" placeholder="hans@hansen.dk" required>
+              </div>
+              <div class="form-group">
+                  <label for="input-signup-username">Username</label>
+                  <input type="text" name="username" class="form-control" id="input-signup-username" placeholder="HansHansen" required>
+              </div>  
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#login-modal">Already have an account?</a>
+              <button type="button" class="btn btn-success">Signup</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

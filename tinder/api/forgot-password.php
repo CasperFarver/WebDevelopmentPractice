@@ -19,15 +19,15 @@
     for ($i=0; $i < count($ajUsers); $i++) { 
       if($ajUsers[$i]->username == $sUsernameOrEmail || $ajUsers[$i]->email == $sUsernameOrEmail) {
 
-        require 'PHPMailer/src/Exception.php';
-        require 'PHPMailer/src/PHPMailer.php';
-        require 'PHPMailer/src/SMTP.php';
+        //require 'PHPMailer/src/Exception.php';
+        //require 'PHPMailer/src/PHPMailer.php';
+        //require 'PHPMailer/src/SMTP.php';
 
         $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
         try {
             //Server settings
-            // $mail->SMTPDebug = 2;                                 // Enable verbose debug output
-            $mail->isSMTP();                                      // Set mailer to use SMTP
+            //$mail->SMTPDebug = 2;                                 // Enable verbose debug output
+            $mail->IsSMTP();                                      // Set mailer to use SMTP
             $mail->Host = 'smtp.gmail.com';                       // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
             $mail->Username = 'casperfarver.kea@gmail.com' ;           // SMTP username
@@ -42,7 +42,7 @@
             $mail->addAddress($ajUsers[$i]->email, $ajUsers[$i]->firstName);                               
             // $mail->addAddress('dittechristensen@live.dk', 'Joe User');          // Add a recipient
             //$mail->addReplyTo('dittechristensen@live.dk', 'Information');
-            //$mail->addAddress('casperfarver@hotmail.com');                       // Name is optional
+            //$mail->addAddress('a@a.com');                       // Name is optional
             //$mail->addCC('cc@example.com');
             //$mail->addBCC('bcc@example.com');
 
