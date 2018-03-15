@@ -43,25 +43,24 @@
           </div>
           <form id="frm-login">
             <div class="modal-body">
-              <div class="form-group">
-                  <label for="input-login-username">Username</label>
-                  <input type="text" name="username" class="form-control" id="input-login-username" placeholder="Enter username" required>
-              </div>
-              <div class="form-group">
-                <label for="input-login-password">Password</label>
-                <input type="password" name="password" class="form-control" id="input-login-password" placeholder="Enter password" required>
-              </div>
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="remember-me-check">
-                <label class="form-check-label" for="remember-me-check">Remember me</label>
-                <div class="text-right">
-                  <!-- TODO: align link with checkbox and label but just to the right -->
-                  <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#forgot-password-modal">Forgot password?</a>
+              <div class="container-fluid">
+                <div class="form-group">
+                    <label for="input-login-username">Username</label>
+                    <input type="text" name="username" class="form-control" id="input-login-username" placeholder="Enter username" required>
+                </div>
+                <div class="form-group">
+                  <label for="input-login-password">Password</label>
+                  <input type="password" name="password" class="form-control" id="input-login-password" placeholder="Enter password" required>
+                </div>
+                <div class="form-group">
+                  <input type="checkbox" class="form-check-input" id="remember-me-check">
+                  <label class="form-check-label" for="remember-me-check">Remember me</label>
                 </div>
               </div>
             </div>
             <div class="modal-footer">
               <a href="#" class="mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#signup-modal">Need an account?</a>
+              <a href="#" class="mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#forgot-password-modal">Forgot password?</a>
               <button type="submit" class="btn btn-primary">Login</button>
             </div>
           </form>
@@ -81,30 +80,73 @@
           </div>
           <form id="frm-signup">
             <div class="modal-body">
-              <div class="form-group">
-                <label for="input-signup-firstname">First name</label>
-                <input type="text" name="firstName" class="form-control" id="input-signup-firstname" placeholder="Hans" required>
-              </div>
-              <div class="form-group">
-                  <label for="input-signup-lastname">First name</label>
-                  <input type="text" name="lastName" class="form-control" id="input-signup-lastname" placeholder="Hansen" required>
-              </div>
-              <div class="form-group">
-                  <label for="input-signup-phonenumber">Phone number</label>
-                  <input type="number" name="phoneNumber" class="form-control" id="input-signup-phonenumber" placeholder="12345678" required>
-              </div>
-              <div class="form-group">
-                  <label for="input-signup-email">Email</label>
+              <div class="container-fluid">
+                <div class="form-group">
+                  <label for="input-signup-firstName">*First name</label>
+                  <input type="text" name="firstName" class="form-control" id="input-signup-firstName" placeholder="Hans" required>
+                </div>
+                <div class="form-group">
+                    <label for="input-signup-lastName">*Last name</label>
+                    <input type="text" name="lastName" class="form-control" id="input-signup-lastName" placeholder="Hansen" required>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <label for="input-signup-age">*Age</label>
+                      <input type="number" name="age" class="form-control" id="input-signup-age" placeholder="25" min="18" max="99" required>
+                    </div>
+                    <div class="col-sm-4">
+                      <label for="sel-gender">*Gender</label>
+                      <select class="custom-select" name="gender" id="sel-gender" required>
+                        <option value=""></option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-4">
+                      <label for="sel-interestedIn">*Interested in</label>
+                      <select class="custom-select" name="gender" id="sel-interestedIn" required>
+                        <option value=""></option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="female">Both</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="txt-signup-description">Description</label>
+                  <textarea class="form-control" name="description" aria-label="With textarea" id="txt-signup-description" placeholder="Write something awesome about yourself..."></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="input-signup-phonenumber">*Phone number</label>
+                  <input type="number" name="phoneNumber" class="form-control" id="input-signup-phonenumber" placeholder="12345678" min="11111111" max="99999999" title="Must be a valid danish phone number" required>
+                </div>
+                <div class="form-group">
+                  <label for="input-signup-email">*Email</label>
                   <input type="email" name="email" class="form-control" id="input-signup-email" placeholder="hans@hansen.dk" required>
-              </div>
-              <div class="form-group">
-                  <label for="input-signup-username">Username</label>
+                </div>
+                <div class="form-group">
+                  <label for="input-signup-username">*Username</label>
                   <input type="text" name="username" class="form-control" id="input-signup-username" placeholder="HansHansen" required>
-              </div>  
-            </div>
-            <div class="modal-footer">
-              <a href="#" class="mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#login-modal">Already have an account?</a>
-              <button type="button" class="btn btn-success">Signup</button>
+                </div>
+                <div class="form-group">
+                  <label for="input-signup-password">*Password</label>
+                  <input type="password" name="password" class="form-control" id="input-signup-password" placeholder="Type password" required>
+                </div>
+                <div class="form-group">
+                  <label for="input-signup-passwordConfirm">*Confirm password</label>
+                  <input type="password" name="passwordConfirm" class="form-control" id="input-signup-passwordConfirm" placeholder="Confirm password" required>
+                </div>
+                <div class="form-group">
+                  <br>
+                  * Fields are required and must be filled out!
+                </div>  
+              </div>
+              <div class="modal-footer">
+                <a href="#" class="mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#login-modal">Already have an account?</a>
+                <button type="submit" class="btn btn-success">Signup</button>
+              </div>
             </div>
           </form>
         </div>

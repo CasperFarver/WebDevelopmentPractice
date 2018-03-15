@@ -72,17 +72,52 @@ $(document).ready(function() {
     console.log('{"status" : "error", "message" : "Something went wrong, trying to retrieve the data"}');
   });
 
-  
-  //Keyup on username input field for login
+
+  //KEYUP
+  //---------
+  //Keyup on username input field - login
   $('#input-login-username').keyup(function() {
-    validateUsername();
+    validateUsernameLogin();
   });
 
-  //Keyup on password input field for login
+  //Keyup on username input field - signup
+  $('#input-signup-username').keyup(function() {
+    validateUsernameSignup();
+  });
+
+  //Keyup on password input field - login
   $('#input-login-password').keyup(function() {
-    validatePassword();
+    validatePasswordLogin();
   });
 
+  //Keyup on password input field - signup
+  $('#input-signup-password').keyup(function() {
+    validatePasswordSignup();
+  });
+
+  //Keyup on password input field - signup
+  $('#input-signup-passwordConfirm').keyup(function() {
+    validatePasswordConfirm();
+  });
+
+  //Keyup on firstName field - signup
+  $('#input-signup-firstName').keyup(function() {
+    validateFirstName();
+  });
+
+  //Keyup on lastName field - signup
+  $('#input-signup-lastName').keyup(function() {
+    validateLastName();
+  });
+
+  //Keyup on email field - signup
+  $('#input-signup-email').keyup(function() {
+    validateEmail();
+  });
+
+
+  //ON SUBMIT
+  //---------
   //On submit for frm-login
   $('#frm-login').submit(function(event) {
     event.preventDefault();
@@ -95,13 +130,16 @@ $(document).ready(function() {
     forgotPassword();
   });
 
+
   //FUNCTIONS
   //---------
-  //Function that validates the username
-  function validateUsername() {
+
+  //LOGIN
+  //Function that validates the username - login
+  function validateUsernameLogin() {
 
     //Regex that checks username: only letters, numbers, dashes and underscores. Between 6 and 16 chars.
-    var usernameRegex = /^[a-zA-Z0-9_-]{5,16}$/;
+    var usernameRegex = /^[a-zA-ZæøåÆØÅ0-9_-]{5,16}$/;
 
     if($('#input-login-username').val().match(usernameRegex)) {
       $('#input-login-username').css('border-color', 'green');
@@ -110,8 +148,8 @@ $(document).ready(function() {
     }
   }
 
-  //Function that validate the password
-  function validatePassword() {
+  //Function that validate the password - login
+  function validatePasswordLogin() {
     
     //Match 6 to 15 character string with at least one upper case letter, one lower case letter, and one digit
     var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,15}$/;
@@ -122,6 +160,84 @@ $(document).ready(function() {
       $('#input-login-password').css('border-color', 'red');
     }
   }
+
+  //SIGNUP
+  //Function that validates firstName - signup  
+  function validateFirstName() {
+
+    //Regex that checks firstName: only letters and between 2 and 20 characters
+    var nameRegex = /^[a-zA-ZæøåÆØÅ]{2,20}$/;
+
+    if($('#input-signup-firstName').val().match(nameRegex)) {
+      $('#input-signup-firstName').css('border-color', 'green'); 
+    } else {
+      $('#input-signup-firstName').css('border-color', 'red');
+    }
+  }
+
+  //Function that validates lastName - signup 
+  function validateLastName() {
+
+    //Regex that checks firstName: only letters and between 2 and 20 characters
+    var nameRegex = /^[a-zA-ZæøåÆØÅ]{2,20}$/;
+
+    if($('#input-signup-lastName').val().match(nameRegex)) {
+      $('#input-signup-lastName').css('border-color', 'green'); 
+    } else {
+      $('#input-signup-lastName').css('border-color', 'red'); 
+    }
+  }
+
+  //Function that validates email
+  function validateEmail() {
+    
+    //Regex that checks email
+    var emailRegex= /^[a-zA-ZæøåÆØÅ0-9._%+-]+@[a-zA-ZæøåÆØÅ0-9.-]+\.[a-z]{2,3}$/;
+
+    if($('#input-signup-email').val().match(emailRegex)) {
+      $('#input-signup-email').css('border-color', 'green'); 
+    } else {
+      $('#input-signup-email').css('border-color', 'red'); 
+    }
+  }  
+    
+
+  //Function that validates the username - signup
+  function validateUsernameSignup() {
+
+    //Regex that checks username: only letters, numbers, dashes and underscores. Between 6 and 16 chars.
+    var usernameRegex = /^[a-zA-ZæøåÆØÅ0-9_-]{5,16}$/;
+
+    if($('#input-signup-username').val().match(usernameRegex)) {
+      $('#input-signup-username').css('border-color', 'green');
+    } else {
+      $('#input-signup-username').css('border-color', 'red');
+    }
+  }
+
+  //Function that validates the password - signup
+  function validatePasswordSignup() {
+    
+    //Match 6 to 15 character string with at least one upper case letter, one lower case letter, and one digit
+    var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,15}$/;
+
+    if($('#input-signup-password').val().match(passwordRegex)) {
+      $('#input-signup-password').css('border-color', 'green');
+    } else {
+      $('#input-signup-password').css('border-color', 'red');
+    }
+  }
+
+  //Function that validates that passwordConfirm and password are alike
+  function validatePasswordConfirm() {
+
+    if($('#input-signup-password').val() == $('#input-signup-passwordConfirm').val()) {
+      $('#input-signup-passwordConfirm').css('border-color', 'green');  
+    } else {
+      $('#input-signup-passwordConfirm').css('border-color', 'red'); 
+    }
+  }
+
 
   //Function that validates the login info all together does the combo of username and password exists?
   function validateLogin() {
