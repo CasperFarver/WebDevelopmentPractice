@@ -75,42 +75,42 @@ $(document).ready(function() {
 
   //KEYUP
   //---------
-  //Keyup on username input field - login
+  //input-login-username
   $('#input-login-username').keyup(function() {
     validateUsernameLogin();
   });
 
-  //Keyup on username input field - signup
-  $('#input-signup-username').keyup(function() {
-    validateUsernameSignup();
-  });
-
-  //Keyup on password input field - login
+  //input-login-password
   $('#input-login-password').keyup(function() {
     validatePasswordLogin();
   });
 
-  //Keyup on password input field - signup
+  //input-signup-username
+  $('#input-signup-username').keyup(function() {
+    validateUsernameSignup();
+  });
+
+  //input-signup-password
   $('#input-signup-password').keyup(function() {
     validatePasswordSignup();
   });
 
-  //Keyup on password input field - signup
+  //input-signup-passwordConfirm
   $('#input-signup-passwordConfirm').keyup(function() {
     validatePasswordConfirm();
   });
 
-  //Keyup on firstName field - signup
+  //input-signup-firstName
   $('#input-signup-firstName').keyup(function() {
     validateFirstName();
   });
 
-  //Keyup on lastName field - signup
+  //input-signup-lastName
   $('#input-signup-lastName').keyup(function() {
     validateLastName();
   });
 
-  //Keyup on email field - signup
+  //input-signup-email
   $('#input-signup-email').keyup(function() {
     validateEmail();
   });
@@ -118,16 +118,22 @@ $(document).ready(function() {
 
   //ON SUBMIT
   //---------
-  //On submit for frm-login
+  //frm-login
   $('#frm-login').submit(function(event) {
     event.preventDefault();
-    validateLogin();
+    login();
   });
 
-  //On submit for frm-forgot-password
+  //frm-forgot-password
   $('#frm-forgot-password').submit(function(event) {
     event.preventDefault();
     forgotPassword();
+  });
+
+  //frm-signup
+  $('#frm-signup').submit(function(event) {
+    event.preventDefault();
+    signup();
   });
 
 
@@ -135,7 +141,7 @@ $(document).ready(function() {
   //---------
 
   //LOGIN
-  //Function that validates the username - login
+  //Username validation - login
   function validateUsernameLogin() {
 
     //Regex that checks username: only letters, numbers, dashes and underscores. Between 6 and 16 chars.
@@ -148,7 +154,7 @@ $(document).ready(function() {
     }
   }
 
-  //Function that validate the password - login
+  //Password validation - login
   function validatePasswordLogin() {
     
     //Match 6 to 15 character string with at least one upper case letter, one lower case letter, and one digit
@@ -161,92 +167,14 @@ $(document).ready(function() {
     }
   }
 
-  //SIGNUP
-  //Function that validates firstName - signup  
-  function validateFirstName() {
-
-    //Regex that checks firstName: only letters and between 2 and 20 characters
-    var nameRegex = /^[a-zA-ZæøåÆØÅ]{2,20}$/;
-
-    if($('#input-signup-firstName').val().match(nameRegex)) {
-      $('#input-signup-firstName').css('border-color', 'green'); 
-    } else {
-      $('#input-signup-firstName').css('border-color', 'red');
-    }
-  }
-
-  //Function that validates lastName - signup 
-  function validateLastName() {
-
-    //Regex that checks firstName: only letters and between 2 and 20 characters
-    var nameRegex = /^[a-zA-ZæøåÆØÅ]{2,20}$/;
-
-    if($('#input-signup-lastName').val().match(nameRegex)) {
-      $('#input-signup-lastName').css('border-color', 'green'); 
-    } else {
-      $('#input-signup-lastName').css('border-color', 'red'); 
-    }
-  }
-
-  //Function that validates email
-  function validateEmail() {
-    
-    //Regex that checks email
-    var emailRegex= /^[a-zA-ZæøåÆØÅ0-9._%+-]+@[a-zA-ZæøåÆØÅ0-9.-]+\.[a-z]{2,3}$/;
-
-    if($('#input-signup-email').val().match(emailRegex)) {
-      $('#input-signup-email').css('border-color', 'green'); 
-    } else {
-      $('#input-signup-email').css('border-color', 'red'); 
-    }
-  }  
-    
-
-  //Function that validates the username - signup
-  function validateUsernameSignup() {
-
-    //Regex that checks username: only letters, numbers, dashes and underscores. Between 6 and 16 chars.
-    var usernameRegex = /^[a-zA-ZæøåÆØÅ0-9_-]{5,16}$/;
-
-    if($('#input-signup-username').val().match(usernameRegex)) {
-      $('#input-signup-username').css('border-color', 'green');
-    } else {
-      $('#input-signup-username').css('border-color', 'red');
-    }
-  }
-
-  //Function that validates the password - signup
-  function validatePasswordSignup() {
-    
-    //Match 6 to 15 character string with at least one upper case letter, one lower case letter, and one digit
-    var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,15}$/;
-
-    if($('#input-signup-password').val().match(passwordRegex)) {
-      $('#input-signup-password').css('border-color', 'green');
-    } else {
-      $('#input-signup-password').css('border-color', 'red');
-    }
-  }
-
-  //Function that validates that passwordConfirm and password are alike
-  function validatePasswordConfirm() {
-
-    if($('#input-signup-password').val() == $('#input-signup-passwordConfirm').val()) {
-      $('#input-signup-passwordConfirm').css('border-color', 'green');  
-    } else {
-      $('#input-signup-passwordConfirm').css('border-color', 'red'); 
-    }
-  }
-
-
-  //Function that validates the login info all together does the combo of username and password exists?
-  function validateLogin() {
+  //Login - Does the combo of username and password exists?
+  function login() {
     
     var form = $('#frm-login');
     
     $.ajax({
       "method" : "POST",
-      "url" : "../tinder/api/validate-login.php",
+      "url" : "../tinder/api/login.php",
       "data" : form.serialize(),    //Encodes a set of form elements (in this case the form element it self) as a string for submission - What we sent to the API
       "dataType" : "JSON",    //What type we expect to receive from the API      
     }).done(function(data) {
@@ -290,6 +218,141 @@ $(document).ready(function() {
 
       }
     }).fail(function() {
+      console.log('{"status" : "error", "message" : "Some error occured in backend"}');
+
+      //Sweet Alert
+      swal({
+        title: "Error!",
+        text: "An error occured on the server - Try again later.",
+        icon: "error",
+        button: "Okay"
+      });
+
+    });
+  };
+
+
+  //SIGNUP
+  //FirstName validation - signup  
+  function validateFirstName() {
+
+    //Regex that checks firstName: only letters and between 2 and 20 characters
+    var nameRegex = /^[a-zA-ZæøåÆØÅ]{2,20}$/;
+
+    if($('#input-signup-firstName').val().match(nameRegex)) {
+      $('#input-signup-firstName').css('border-color', 'green'); 
+    } else {
+      $('#input-signup-firstName').css('border-color', 'red');
+    }
+  }
+
+  //Function that validates lastName - signup 
+  function validateLastName() {
+
+    //Regex that checks firstName: only letters and between 2 and 20 characters
+    var nameRegex = /^[a-zA-ZæøåÆØÅ]{2,20}$/;
+
+    if($('#input-signup-lastName').val().match(nameRegex)) {
+      $('#input-signup-lastName').css('border-color', 'green'); 
+    } else {
+      $('#input-signup-lastName').css('border-color', 'red'); 
+    }
+  }
+
+  //Email validation
+  function validateEmail() {
+    
+    //Regex that checks email
+    var emailRegex= /^[a-zA-ZæøåÆØÅ0-9._%+-]+@[a-zA-ZæøåÆØÅ0-9.-]+\.[a-z]{2,3}$/;
+
+    if($('#input-signup-email').val().match(emailRegex)) {
+      $('#input-signup-email').css('border-color', 'green'); 
+    } else {
+      $('#input-signup-email').css('border-color', 'red'); 
+    }
+  }  
+    
+  //Username validation - signup
+  function validateUsernameSignup() {
+
+    //Regex that checks username: only letters, numbers, dashes and underscores. Between 6 and 16 chars.
+    var usernameRegex = /^[a-zA-ZæøåÆØÅ0-9_-]{5,16}$/;
+
+    if($('#input-signup-username').val().match(usernameRegex)) {
+      $('#input-signup-username').css('border-color', 'green');
+    } else {
+      $('#input-signup-username').css('border-color', 'red');
+    }
+  }
+
+  //Password validation - signup
+  function validatePasswordSignup() {
+    
+    //Match 6 to 15 character string with at least one upper case letter, one lower case letter, and one digit
+    var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,15}$/;
+
+    if($('#input-signup-password').val().match(passwordRegex)) {
+      $('#input-signup-password').css('border-color', 'green');
+    } else {
+      $('#input-signup-password').css('border-color', 'red');
+    }
+  }
+
+  //Are passwordConfirm and password alike?
+  function validatePasswordConfirm() {
+
+    if($('#input-signup-password').val() == $('#input-signup-passwordConfirm').val()) {
+      $('#input-signup-passwordConfirm').css('border-color', 'green');  
+    } else {
+      $('#input-signup-passwordConfirm').css('border-color', 'red'); 
+    }
+  }
+
+  //Signup
+  function signup() {
+
+    var form = $('#frm-signup');
+
+    $.ajax({
+      "method" : "POST",
+      "url" : "../tinder/api/signup.php",
+      "data" : form.serialize(),
+      "dataType" : "JSON",
+    }).done(function(data) {
+      
+      console.log(data);    //Only for test
+
+      if(data.message == 'Username already exists') {
+        
+        //Sweet Alert
+        swal({
+          title: "Ooops!",
+          text: "This username is already taken! Please try with another.",
+          icon: "error",
+          button: "Okay"
+        });
+      } else if (data.message == 'Email already exists') {
+        
+        //Sweet Alert
+        swal({
+          title: "Ooops!",
+          text: "This email has already been used! Please try with another.",
+          icon: "error",
+          button: "Okay"
+        });
+      } else if (data.message == 'You are missing vital information!') {
+        
+        //Sweet Alert
+        swal({
+          title: "Ooops!",
+          text: "You are missing to fill out vital information!",
+          icon: "error",
+          button: "Okay"
+        });
+      }
+
+    }).fail(function() {
+
       console.log('{"status" : "error", "message" : "Some error occured in backend"}');
 
       //Sweet Alert
