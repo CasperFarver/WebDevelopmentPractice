@@ -61,7 +61,7 @@
             <div class="modal-footer">
               <a href="#" class="mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#signup-modal">Need an account?</a>
               <a href="#" class="mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#forgot-password-modal">Forgot password?</a>
-              <button type="submit" class="btn btn-primary">Login</button>
+              <button id="btn-login-submit" type="submit" class="btn btn-primary" disabled>Login</button>
             </div>
           </form>
         </div>
@@ -120,7 +120,7 @@
                 </div>
                 <div class="form-group">
                   <label for="input-signup-phonenumber">*Phone number</label>
-                  <input type="number" name="phoneNumber" class="form-control" id="input-signup-phonenumber" placeholder="12345678" min="11111111" max="99999999" title="Must be a valid danish phone number" required>
+                  <input type="number" name="phoneNumber" class="form-control" id="input-signup-phoneNumber" placeholder="12345678" min="11111111" max="99999999" title="Must be a valid danish phone number" required>
                 </div>
                 <div class="form-group">
                   <label for="input-signup-email">*Email</label>

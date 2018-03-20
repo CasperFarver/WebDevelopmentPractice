@@ -75,44 +75,19 @@ $(document).ready(function() {
 
   //KEYUP
   //---------
-  //input-login-username
-  $('#input-login-username').keyup(function() {
-    validateUsernameLogin();
+  //input-login-username & input-login-password
+  $('#input-login-username, #input-login-password').keyup(function() {
+    validateLogin();
   });
 
-  //input-login-password
-  $('#input-login-password').keyup(function() {
-    validatePasswordLogin();
+  //all required input fields in signup
+  $('#input-signup-firstName, #input-signup-lastName, #input-signup-age, #input-signup-phoneNumber, #input-signup-email, #input-signup-username, #input-signup-password, #input-signup-passwordConfirm').keyup(function() {
+    validateSignup();
   });
 
-  //input-signup-username
-  $('#input-signup-username').keyup(function() {
-    validateUsernameSignup();
-  });
-
-  //input-signup-password
-  $('#input-signup-password').keyup(function() {
-    validatePasswordSignup();
-  });
-
-  //input-signup-passwordConfirm
-  $('#input-signup-passwordConfirm').keyup(function() {
-    validatePasswordConfirm();
-  });
-
-  //input-signup-firstName
-  $('#input-signup-firstName').keyup(function() {
-    validateFirstName();
-  });
-
-  //input-signup-lastName
-  $('#input-signup-lastName').keyup(function() {
-    validateLastName();
-  });
-
-  //input-signup-email
-  $('#input-signup-email').keyup(function() {
-    validateEmail();
+  //to select elements in signup
+  $('#sel-gender, #sel-interestedIn').change(function() {
+    validateSignup();
   });
 
 
@@ -141,29 +116,36 @@ $(document).ready(function() {
   //---------
 
   //LOGIN
-  //Username validation - login
-  function validateUsernameLogin() {
+  //Validation for username and password - login
+  function validateLogin() {
 
+    //REGEX
+    //-----
     //Regex that checks username: only letters, numbers, dashes and underscores. Between 6 and 16 chars.
     var usernameRegex = /^[a-zA-ZæøåÆØÅ0-9_-]{5,16}$/;
 
+    //Match 6 to 15 character string with at least one upper case letter, one lower case letter, and one digit
+    var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,15}$/;
+
+    //username
     if($('#input-login-username').val().match(usernameRegex)) {
       $('#input-login-username').css('border-color', 'green');
     } else {
       $('#input-login-username').css('border-color', 'red');
     }
-  }
 
-  //Password validation - login
-  function validatePasswordLogin() {
-    
-    //Match 6 to 15 character string with at least one upper case letter, one lower case letter, and one digit
-    var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,15}$/;
-
+    //password
     if($('#input-login-password').val().match(passwordRegex)) {
       $('#input-login-password').css('border-color', 'green');
     } else {
       $('#input-login-password').css('border-color', 'red');
+    }
+
+    //Enable submit button when fields are correctly filled out
+    if($('#input-login-username').val().match(usernameRegex) && $('#input-login-password').val().match(passwordRegex)) {
+      $('#btn-login-submit').prop('disabled', false);
+    } else {
+      $('#btn-login-submit').prop('disabled', true);
     }
   }
 
@@ -233,75 +215,91 @@ $(document).ready(function() {
 
 
   //SIGNUP
-  //FirstName validation - signup  
-  function validateFirstName() {
+  //Validation all input fields - signup  
+  function validateSignup() {
 
-    //Regex that checks firstName: only letters and between 2 and 20 characters
+    //REGEX
+    //-----
+    //Regex that checks firstName & lastName: only letters and between 2 and 20 characters
     var nameRegex = /^[a-zA-ZæøåÆØÅ]{2,20}$/;
 
+    //Regex that check for exactly 8 digits
+    var phoneNumberRegex = /^\d{8}$/;
+
+    //Regex that checks email
+    var emailRegex= /^[a-zA-ZæøåÆØÅ0-9._%+-]+@[a-zA-ZæøåÆØÅ0-9.-]+\.[a-z]{2,3}$/;
+
+    //Regex that checks username: only letters, numbers, dashes and underscores. Between 6 and 16 chars.
+    var usernameRegex = /^[a-zA-ZæøåÆØÅ0-9_-]{5,16}$/;
+
+    //Match 6 to 15 character string with at least one upper case letter, one lower case letter, and one digit
+    var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,15}$/;
+
+    //firstName
     if($('#input-signup-firstName').val().match(nameRegex)) {
       $('#input-signup-firstName').css('border-color', 'green'); 
     } else {
       $('#input-signup-firstName').css('border-color', 'red');
     }
-  }
 
-  //Function that validates lastName - signup 
-  function validateLastName() {
-
-    //Regex that checks firstName: only letters and between 2 and 20 characters
-    var nameRegex = /^[a-zA-ZæøåÆØÅ]{2,20}$/;
-
+    //lastName
     if($('#input-signup-lastName').val().match(nameRegex)) {
       $('#input-signup-lastName').css('border-color', 'green'); 
     } else {
       $('#input-signup-lastName').css('border-color', 'red'); 
     }
-  }
-
-  //Email validation
-  function validateEmail() {
     
-    //Regex that checks email
-    var emailRegex= /^[a-zA-ZæøåÆØÅ0-9._%+-]+@[a-zA-ZæøåÆØÅ0-9.-]+\.[a-z]{2,3}$/;
+    //age - must be  more than 17 years old
+    if($('#input-signup-age').val() > 17) {
+      $('#input-signup-age').css('border-color', 'green'); 
+    } else {
+      $('#input-signup-age').css('border-color', 'red'); 
+    }
 
+    //gender - must be filled out
+    if($('#sel-gender').val() !== '') {
+      $('#sel-gender').css('border-color', 'green'); 
+    } else {
+      $('#sel-gender').css('border-color', 'red'); 
+    }
+
+    //interestedIn - must be filled out
+    if($('#sel-interestedIn').val() !== '') {
+      $('#sel-interestedIn').css('border-color', 'green'); 
+    } else {
+      $('#sel-interestedIn').css('border-color', 'red'); 
+    }
+
+    //phoneNumber
+    if($('#input-signup-phoneNumber').val().match(phoneNumberRegex)) {
+      $('#input-signup-phoneNumber').css('border-color', 'green'); 
+    } else {
+      $('#input-signup-phoneNumber').css('border-color', 'red');
+    }
+
+    //email
     if($('#input-signup-email').val().match(emailRegex)) {
       $('#input-signup-email').css('border-color', 'green'); 
     } else {
       $('#input-signup-email').css('border-color', 'red'); 
     }
-  }  
-    
-  //Username validation - signup
-  function validateUsernameSignup() {
 
-    //Regex that checks username: only letters, numbers, dashes and underscores. Between 6 and 16 chars.
-    var usernameRegex = /^[a-zA-ZæøåÆØÅ0-9_-]{5,16}$/;
-
+    //username
     if($('#input-signup-username').val().match(usernameRegex)) {
       $('#input-signup-username').css('border-color', 'green');
     } else {
       $('#input-signup-username').css('border-color', 'red');
     }
-  }
 
-  //Password validation - signup
-  function validatePasswordSignup() {
-    
-    //Match 6 to 15 character string with at least one upper case letter, one lower case letter, and one digit
-    var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,15}$/;
-
+    //password
     if($('#input-signup-password').val().match(passwordRegex)) {
       $('#input-signup-password').css('border-color', 'green');
     } else {
       $('#input-signup-password').css('border-color', 'red');
     }
-  }
 
-  //Are passwordConfirm and password alike?
-  function validatePasswordConfirm() {
-
-    if($('#input-signup-password').val() == $('#input-signup-passwordConfirm').val()) {
+    //confirmPassword
+    if($('#input-signup-passwordConfirm').val().match(passwordRegex) && $('#input-signup-password').val() == $('#input-signup-passwordConfirm').val()) {
       $('#input-signup-passwordConfirm').css('border-color', 'green');  
     } else {
       $('#input-signup-passwordConfirm').css('border-color', 'red'); 
