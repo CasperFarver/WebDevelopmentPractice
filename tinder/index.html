@@ -45,11 +45,11 @@
             <div class="modal-body">
               <div class="container-fluid">
                 <div class="form-group">
-                    <label for="input-login-username">Username</label>
+                    <label for="input-login-username" title="Type in your username.">Username</label>
                     <input type="text" name="username" class="form-control" id="input-login-username" placeholder="Enter username" required>
                 </div>
                 <div class="form-group">
-                  <label for="input-login-password">Password</label>
+                  <label for="input-login-password" title="Type in your password.">Password</label>
                   <input type="password" name="password" class="form-control" id="input-login-password" placeholder="Enter password" required>
                 </div>
                 <div class="form-group">
@@ -82,21 +82,21 @@
             <div class="modal-body">
               <div class="container-fluid">
                 <div class="form-group">
-                  <label for="input-signup-firstName">*First name</label>
+                  <label for="input-signup-firstName" title="First name: Only letters. No spaces. Between 2 and 20 characters.">*First name</label>
                   <input type="text" name="firstName" class="form-control" id="input-signup-firstName" placeholder="Hans" required>
                 </div>
                 <div class="form-group">
-                    <label for="input-signup-lastName">*Last name</label>
+                    <label for="input-signup-lastName" title="Last name: Only letters. No spaces. Between 2 and 20 characters.">*Last name</label>
                     <input type="text" name="lastName" class="form-control" id="input-signup-lastName" placeholder="Hansen" required>
                 </div>
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-4">
-                      <label for="input-signup-age">*Age</label>
+                      <label for="input-signup-age" title="Age: Only numbers. Must be 18 or older to use it.">*Age</label>
                       <input type="number" name="age" class="form-control" id="input-signup-age" placeholder="25" min="18" max="99" required>
                     </div>
                     <div class="col-sm-4">
-                      <label for="sel-gender">*Gender</label>
+                      <label for="sel-gender" title="Gender: Please select your gender.">*Gender</label>
                       <select class="custom-select" name="gender" id="sel-gender" required>
                         <option value=""></option>
                         <option value="male">Male</option>
@@ -104,7 +104,7 @@
                       </select>
                     </div>
                     <div class="col-sm-4">
-                      <label for="sel-interestedIn">*Interested in</label>
+                      <label for="sel-interestedIn" title="Interested in: Please select, what you are looking for.">*Interested in</label>
                       <select class="custom-select" name="interestedIn" id="sel-interestedIn" required>
                         <option value=""></option>
                         <option value="male">Male</option>
@@ -115,27 +115,27 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="txt-signup-description">Description</label>
+                  <label for="txt-signup-description" title="Description: Write a little something about yourself.">Description</label>
                   <textarea class="form-control" name="description" aria-label="With textarea" id="txt-signup-description" placeholder="Write something awesome about yourself..."></textarea>
                 </div>
                 <div class="form-group">
-                  <label for="input-signup-phonenumber">*Phone number</label>
+                  <label for="input-signup-phonenumber" title="Phone number: Only numbers. Onlye danish phone numbers allowed. Exactly 8 digits.">*Phone number</label>
                   <input type="number" name="phoneNumber" class="form-control" id="input-signup-phoneNumber" placeholder="12345678" min="11111111" max="99999999" title="Must be a valid danish phone number" required>
                 </div>
                 <div class="form-group">
-                  <label for="input-signup-email">*Email</label>
+                  <label for="input-signup-email" title="Email: Valid email adress. Must contain @ and . something.">*Email</label>
                   <input type="email" name="email" class="form-control" id="input-signup-email" placeholder="hans@hansen.dk" required>
                 </div>
                 <div class="form-group">
-                  <label for="input-signup-username">*Username</label>
+                  <label for="input-signup-username" title="Username: Between 5 and 16 characters. Letters, numbers, - and _ allowed.">*Username</label>
                   <input type="text" name="username" class="form-control" id="input-signup-username" placeholder="HansHansen" required>
                 </div>
                 <div class="form-group">
-                  <label for="input-signup-password">*Password</label>
+                  <label for="input-signup-password" title="Password: Must contain 1 uppercase letter, 1 lowercase letter, a number and be between 6 and 15 characters.">*Password</label>
                   <input type="password" name="password" class="form-control" id="input-signup-password" placeholder="Type password" required>
                 </div>
                 <div class="form-group">
-                  <label for="input-signup-passwordConfirm">*Confirm password</label>
+                  <label for="input-signup-passwordConfirm" title="Confirm password: Same rules as password, and then it must be exactly alike the password!">*Confirm password</label>
                   <input type="password" name="passwordConfirm" class="form-control" id="input-signup-passwordConfirm" placeholder="Confirm password" required>
                 </div>
                 <div class="form-group">
@@ -145,7 +145,7 @@
               </div>
               <div class="modal-footer">
                 <a href="#" class="mr-auto" data-dismiss="modal" data-toggle="modal" data-target="#login-modal">Already have an account?</a>
-                <button type="submit" class="btn btn-success">Signup</button>
+                <button id="btn-signup-submit" type="submit" class="btn btn-success" disabled>Signup</button>
               </div>
             </div>
           </form>

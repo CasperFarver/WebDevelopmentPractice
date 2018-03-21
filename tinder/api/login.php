@@ -13,8 +13,6 @@
 
   //If the input fields are not empty - should not be possible - due to validation in frontend. But just to ensure.
   if(!empty($sUsername) && !empty($sPassword)) {
-    
-    //TODO: VALIDATION OF THE INPUT FIELDS - VALIDATE-LOGIN SHOULD BE REQUIRED HERE!
 
     //Check username and password combo
     for ($i=0; $i < count($ajUsers); $i++) { 

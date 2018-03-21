@@ -304,6 +304,17 @@ $(document).ready(function() {
     } else {
       $('#input-signup-passwordConfirm').css('border-color', 'red'); 
     }
+
+    //Enable submit button when fields are correctly filled out
+    if($('#input-signup-firstName').val().match(nameRegex) && $('#input-signup-lastName').val().match(nameRegex)
+        && $('#input-signup-age').val() > 17 && $('#sel-gender').val() !== '' && $('#sel-interestedIn').val() !== ''
+        && $('#input-signup-phoneNumber').val().match(phoneNumberRegex) && $('#input-signup-email').val().match(emailRegex)
+        && $('#input-signup-username').val().match(usernameRegex) && $('#input-signup-password').val().match(passwordRegex)
+        && ($('#input-signup-passwordConfirm').val().match(passwordRegex) && $('#input-signup-passwordConfirm').val() == $('#input-signup-password').val())) {
+          $('#btn-signup-submit').prop('disabled', false);  
+        } else {
+          $('#btn-signup-submit').prop('disabled', true);
+        }
   }
 
   //Signup
@@ -347,6 +358,27 @@ $(document).ready(function() {
           icon: "error",
           button: "Okay"
         });
+      } else if (data.message == 'Message could not be sent. Mailer Error.'){
+        
+        //Sweet Alert
+        swal({
+          title: "Ooops!",
+          text: "An error occured when we tried to sent you the verification mail. Please contact administrator!",
+          icon: "error",
+          button: "Okay"
+        });
+      } else if (data.status == 'success') {
+        
+        //Sweet Alert
+        swal({
+          title: "Wohoo!",
+          text: "Your account has been created! Please activate your accout through the link we sent.",
+          icon: "success",
+          timer: 3500,
+          button: false
+        }).then(function() {
+            window.location.href = '../tinder/index.html';
+        });
       }
 
     }).fail(function() {
@@ -388,7 +420,7 @@ $(document).ready(function() {
         }).then(function() {
           //Closes modal
           $('#forgot-password-modal').modal('hide');
-        })
+        });
       } else {
 
         //Sweet Alert
@@ -397,7 +429,7 @@ $(document).ready(function() {
           text: "No user with that username/email exists",
           icon: "error",
           button: "Try agian"
-        })
+        });
       }
 
     }).fail(function() {
