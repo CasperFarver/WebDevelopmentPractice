@@ -2,7 +2,7 @@
 //Main page for users when logged in
 
   session_start();
-  echo $_SESSION['id'];   //Only for test
+  //echo $_SESSION['id'];   //Only for test
 
   //Check if session id is set or not empty
   if((!isset($_SESSION['id'])) || (empty($_SESSION['id']))) {
@@ -13,7 +13,9 @@
     exit;
 
   } else {
-      echo '{"status" : "succes", "message" : "Session ID was set"}';    //Only for test
+      echo '{"status" : "success", "message" : "Session ID was set"}';    //Only for test
+
+      echo '<script>console.log(' . $_SESSION['id'] . ')</script>';
 
       $sFileName = 'txt/users.txt';
 
@@ -22,7 +24,7 @@
 
       for ($i=0; $i < count($ajUsers); $i++) { 
         if($_SESSION['id'] = $ajUsers[$i]->id) {
-          echo 'User found';      //Only for test
+          echo '<br>User found<br>';      //Only for test
           
           if($ajUsers[$i]->imageSet == false) {
 
