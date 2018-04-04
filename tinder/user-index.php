@@ -1,21 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#" style="visibility:hidden;">Profile</a>
+        <a class="navbar-brand" href="#" style="visibility:hidden;">Explore</a>
+        <a class="navbar-brand" href="#" style="visibility:hidden;">Matches</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto"></ul>
+          <form class="form-inline my-2 my-lg-0">
+            <button id="btn-logout" class="btn btn-outline-danger my-2 my-sm-0" type="button">Logout</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <p id="firstName"></p>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
+
 <?php
 //Main page for users when logged in
 
   session_start();
-  //echo $_SESSION['id'];   //Only for test
+
+
 
   //Check if session id is set or not empty
   if((!isset($_SESSION['id'])) || (empty($_SESSION['id']))) {
-    echo '{"status" : "error", "message" : "Session ID was not set"}';    //Only for test
-
-    //TODO: Show message telling that user did not get logged in.
-
+    
+    //echo '{"status" : "error", "message" : "Session ID was not set"}';    //Only for test
     exit;
 
   } else {
-      echo '{"status" : "success", "message" : "Session ID was set"}';    //Only for test
+      
+    //echo '{"status" : "success", "message" : "Session ID was set"}';    //Only for test
+      
+    //Store $_SESSION['id'] as a local reference variable  
+    $sSessionID = $_SESSION['id'];
 
-      echo '<script>console.log(' . $_SESSION['id'] . ')</script>';
+      //Store sessionID (which is equal to userID) in localStorage
+      //This is overwriting any existing value stored.
+      echo '<script>localStorage.sessionID = "' . $sSessionID . '"</script>';
+
+      //Store sessionID (which is equal to userID) in sessionStorage
+      //Makes more sense to store it in sessionStorage - but requirement was localStorage.
+      //echo '<script>sessionStorage.sessionID = "' . $_SESSION['id'] . '"</script>';
 
       $sFileName = 'txt/users.txt';
 
@@ -23,34 +73,25 @@
       $ajUsers = json_decode($sajUsers);
 
       for ($i=0; $i < count($ajUsers); $i++) { 
-        if($_SESSION['id'] = $ajUsers[$i]->id) {
-          echo '<br>User found<br>';      //Only for test
+        if($sSessionID == $ajUsers[$i]->id) {
           
-          if($ajUsers[$i]->imageSet == false) {
+          //echo $sSessionID;   //Only for test
+          //echo '<br>User found<br>';      //Only for test
+          //echo $ajUsers[$i]->lastName;    //only for test
 
-            //TODO: Return status - pending and let FE handle the redirect/AJAX for image upload 
-
-            echo '{"status" : "pending", "message" : "Image must be uploaded"}';   
-
-          } else if($ajUsers[$i]->imageSet == true) {
-
-            //TODO: Return status - success and let FE handle the redirect/AJAX for showing the main user page
-
-            echo '{"status" : "success", "message" : "Image has been set! You are all good"}';    
-
-          } else {
-
-            echo '{"status" : "error", "message" : "imageSet is neither true or false"}';
-
+          if($ajUsers[$i]->imageSet == true) {
+            echo '<script>$(".navbar-brand").css({"visibility" : "visible"})</script>';
           }
 
+          echo '<script>$("#firstName").html("' . $ajUsers[$i]->firstName . '");</script>';
+
           exit;
-        } else {
-          echo '{"status" : "error", "message" : "No match between userID and sessionID was found!"}';
-        }
+        } 
       }
+      
+      echo '{"status" : "error", "message" : "No match between userID and sessionID was found!"}';
+        
   }
 
-
-
 ?>
+

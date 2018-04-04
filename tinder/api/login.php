@@ -19,10 +19,13 @@
       if($ajUsers[$i]->username == $sUsername && $ajUsers[$i]->password == $sPassword) {
           
           if($ajUsers[$i]->verification == true) {
+            
+            //Setting a sessionID varaible equal to the userID
             $_SESSION['id'] = $ajUsers[$i]->id;
             echo '{"status" : "success", "message" : "Username and password match is found"}';
             exit;
           } else {
+            
             echo '{"status" : "pending", "message" : "Username and password is correct, but account needs to be activated"}';
             exit;
           }

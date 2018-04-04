@@ -1,13 +1,13 @@
 [
   {
     "firstName" : "Casper",
-    "imageURL" : "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAIA_wDGAAAAAQAAAAAAAA2PAAAAJDMyMjZiYTA1LWE1YjQtNGFlOC1iOTIxLTA5ZWJkYjdhZTU3Mw.jpg",
+    "imageURL" : "https://scontent-sea1-1.cdninstagram.com/vp/a3b439030884a5172be8d75a465c1dd3/5B5EDDE0/t51.2885-15/s480x480/e35/24175199_548487602165077_2495262680558862336_n.jpg?ig_cache_key=MTY2MTkxMTQyMzU5NTU4NzU3NQ%3D%3D.2",
     "description" : "Awesome website. Met a lot of very nice people here! I can definitely say, that 1 like can change your life!",
     "recommendation" : 5
   },
   {
     "firstName" : "Rikke",
-    "imageURL" : "https://media.licdn.com/media/AAEAAQAAAAAAAAJwAAAAJDYyMGI3NzFjLTcyYTctNDFjNy04NzFlLTVhYjZjYTQ4M2YwZQ.jpg",
+    "imageURL" : "https://scontent-sjc3-1.cdninstagram.com/vp/b6bfbbf9edeb85b57e39a17f50890634/5B5E9AF2/t51.2885-15/s480x480/e35/17266005_395539157479302_2787305729244004352_n.jpg?ig_cache_key=MTQ3MjAxNTE2NTc3NjIwOTg0Nw%3D%3D.2",
     "description" : "My fiance is extremely hot! Did not find here through this website though.",
     "recommendation" : 4
   },

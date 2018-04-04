@@ -162,7 +162,6 @@ $(document).ready(function() {
     }).done(function(data) {
       console.log(data);
       if(data.status == 'success') {
-        //console.log('YAY');   //Only for test
 
         swal({
           title: "Success!",
@@ -178,7 +177,6 @@ $(document).ready(function() {
         }); 
 
       } else if(data.status == 'pending'){
-          //console.log('Activation is required');    //Only for test
 
           swal({
             title: "Activation required!",
@@ -188,7 +186,6 @@ $(document).ready(function() {
           });
 
       } else {
-          //console.log('DANG IT');   //Only for test
 
           //Sweet Alert
           swal({
@@ -197,7 +194,6 @@ $(document).ready(function() {
             icon: "error",
             button: "Try again"
           });
-
       }
     }).fail(function() {
       console.log('{"status" : "error", "message" : "Some error occured in backend"}');
