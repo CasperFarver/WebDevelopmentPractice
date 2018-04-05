@@ -29,7 +29,10 @@
       </div>
     </nav>
 
-    <div id="profile">YES SIR</div>
+    <div id="profile">
+      TODO: MAKE ALL THE MARKUP HERE FIRST. AS SEPERATE ITEMS WITH ID'S/CLASSES
+      THEN AFTERWARDS USE .HTML() IN JQUERY TO OVERWRITE THE CONTENT.
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
