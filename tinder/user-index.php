@@ -29,13 +29,14 @@
       </div>
     </nav>
 
-    <p id="firstName"></p>
+    <div id="profile">YES SIR</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/user-index.js"></script>
   </body>
 </html>
 
@@ -43,8 +44,6 @@
 //Main page for users when logged in
 
   session_start();
-
-
 
   //Check if session id is set or not empty
   if((!isset($_SESSION['id'])) || (empty($_SESSION['id']))) {
@@ -55,42 +54,14 @@
   } else {
       
     //echo '{"status" : "success", "message" : "Session ID was set"}';    //Only for test
-      
-    //Store $_SESSION['id'] as a local reference variable  
-    $sSessionID = $_SESSION['id'];
 
       //Store sessionID (which is equal to userID) in localStorage
       //This is overwriting any existing value stored.
-      echo '<script>localStorage.sessionID = "' . $sSessionID . '"</script>';
+      echo '<script>localStorage.sessionID = "' . $_SESSION['id'] . '"</script>';
 
       //Store sessionID (which is equal to userID) in sessionStorage
       //Makes more sense to store it in sessionStorage - but requirement was localStorage.
-      //echo '<script>sessionStorage.sessionID = "' . $_SESSION['id'] . '"</script>';
-
-      $sFileName = 'txt/users.txt';
-
-      $sajUsers = file_get_contents($sFileName);
-      $ajUsers = json_decode($sajUsers);
-
-      for ($i=0; $i < count($ajUsers); $i++) { 
-        if($sSessionID == $ajUsers[$i]->id) {
-          
-          //echo $sSessionID;   //Only for test
-          //echo '<br>User found<br>';      //Only for test
-          //echo $ajUsers[$i]->lastName;    //only for test
-
-          if($ajUsers[$i]->imageSet == true) {
-            echo '<script>$(".navbar-brand").css({"visibility" : "visible"})</script>';
-          }
-
-          echo '<script>$("#firstName").html("' . $ajUsers[$i]->firstName . '");</script>';
-
-          exit;
-        } 
-      }
-      
-      echo '{"status" : "error", "message" : "No match between userID and sessionID was found!"}';
-        
+      //echo '<script>sessionStorage.sessionID = "' . $_SESSION['id'] . '"</script>';    
   }
 
 ?>
