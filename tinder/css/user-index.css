@@ -1,0 +1,21 @@
+.flex-container {
+  display: flex;
+}
+
+.flex-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-hori {
+  display: flex;
+}
+
+#flex-save {
+  align-self: flex-end; 
+}
+
+#img-gender {
+  width: 30px;
+  height: 30px;  
+}

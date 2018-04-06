@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/user-index.css"> 
   </head>
   <body>
     
@@ -29,10 +30,34 @@
       </div>
     </nav>
 
-    <div id="profile">
+    <div class="container flex-container">
+      <div class="flex-rows">
+        <img id="img-profile" src="img/placeholder.jpg" alt="profile image">
+        <input type="file"></input>
+        <textarea name="profile-description" id="txt-profile-decription" cols="30" rows="10">description...</textarea>
+      </div>
+      <div class="flex-rows">
+        <input type="text" value="first name">
+        <input type="text" value="last name">
+        <div class="flex-hori">
+          <img id="img-gender" src="img/male.png" alt="gender">
+          <input type="number" value="25">  
+        </div>
+        <input type="number" value="12345678">
+        <input type="email" value="hans@hansen.dk">
+        <input type="password">
+        <input type="password">
+      </div>
+      <div id="flex-save" class="flex-rows">
+        <button>Save</button>
+      </div>
+    </div>
+
+
+    <!--<div id="profile">
       TODO: MAKE ALL THE MARKUP HERE FIRST. AS SEPERATE ITEMS WITH ID'S/CLASSES
       THEN AFTERWARDS USE .HTML() IN JQUERY TO OVERWRITE THE CONTENT.
-    </div>
+    </div>-->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
