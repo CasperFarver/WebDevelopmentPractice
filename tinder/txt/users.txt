@@ -36,5 +36,24 @@
   "verificationString" : "V2s",
   "likes" : [],
   "currentlyWatching" : ""
+  },
+  {
+  "id" : "3a",
+  "firstName" : "Peter",
+  "lastName" : "Hansen",
+  "age" : "32",
+  "gender" : "male",
+  "interestedIn" : "female",
+  "description" : "",
+  "phoneNumber" : "33445566",
+  "email" : "peter@gmail.com",
+  "username" : "PHansen",
+  "password" : "Peter1",
+  "imageSet" : false,
+  "imageURL" : "",
+  "verification" : true,
+  "verificationString" : "V3s",
+  "likes" : [],
+  "currentlyWatching" : ""
   }
 ]

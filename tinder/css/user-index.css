@@ -1,10 +1,36 @@
+/* Testing ONLY */
+
+/*
+* {
+  box-sizing: border-box;
+  border: 1px solid red;
+}
+*/
+
+/* General tags */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(219, 240, 240);
+}
+
+textarea {
+  resize: none;
+}
+
+/* Flexbox */
 .flex-container {
   display: flex;
+  justify-content: space-around;
 }
 
 .flex-rows {
   display: flex;
   flex-direction: column;
+  width: 22%;
+  justify-content: flex-end;
 }
 
 .flex-hori {
@@ -15,7 +41,22 @@
   align-self: flex-end; 
 }
 
-#img-gender {
-  width: 30px;
-  height: 30px;  
+#flex-gender {
+  display: flex;
+  width: 100%;
 }
+
+
+/* Images */
+#img-profile {
+  margin: 15px 0px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+#sel-gender {
+  margin-right: 8%;
+}
+
+
