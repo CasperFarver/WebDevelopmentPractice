@@ -1,3 +1,29 @@
+<?php
+//Main page for users when logged in
+
+  session_start();
+
+  //Check if session id is set or not empty
+  if((!isset($_SESSION['id'])) || (empty($_SESSION['id']))) {
+    
+    //echo '{"status" : "error", "message" : "Session ID was not set"}';    //Only for test
+    exit;
+
+  } else {
+      
+    //echo '{"status" : "success", "message" : "Session ID was set"}';    //Only for test
+
+      //Store sessionID (which is equal to userID) in localStorage
+      //This is overwriting any existing value stored.
+      echo '<script>localStorage.sessionID = "' . $_SESSION['id'] . '"</script>';
+
+      //Store sessionID (which is equal to userID) in sessionStorage
+      //Makes more sense to store it in sessionStorage - but requirement was localStorage.
+      //echo '<script>sessionStorage.sessionID = "' . $_SESSION['id'] . '"</script>';    
+  }
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -87,41 +113,12 @@
       </div>
 
       <div class="flex-rows form-group">
-        <button type="button" class="form-control btn btn-primary" data-toggle="modal" data-target"#change-password-modal">Change password</button>
+        <button type="button" class="form-control btn btn-primary">Change password</button>
       </div>
       <div id="flex-save" class="flex-rows form-group">
         <button type="submit" class="form-control btn btn-success">Save</button>
       </div>
     </form>
-    
-    <!-- Change password modal -->
-    <div class="modal fade" id="change-password-modal" tabindex="-1" role="dialog" aria-labelledby="change-password-modal-label" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="change-password-modal-label">Change password</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form id="frm-change-password">
-            <div class="modal-body">
-              <div class="form-group">
-                  <label for="input-change-password">Enter new password</label>
-                  <input type="password" name="change-password" class="form-control" id="input-change-password" placeholder="Pass1234" required>
-              </div>
-              <div class="form-group">
-                  <label for="input-change-password-confirm">Confirm new password</label>
-                  <input type="password" name="change-password-confirm" class="form-control" id="input-change-password-confirm" placeholder="Pass1234" required>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-info">Submit</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -133,29 +130,5 @@
   </body>
 </html>
 
-<?php
-//Main page for users when logged in
 
-  session_start();
-
-  //Check if session id is set or not empty
-  if((!isset($_SESSION['id'])) || (empty($_SESSION['id']))) {
-    
-    //echo '{"status" : "error", "message" : "Session ID was not set"}';    //Only for test
-    exit;
-
-  } else {
-      
-    //echo '{"status" : "success", "message" : "Session ID was set"}';    //Only for test
-
-      //Store sessionID (which is equal to userID) in localStorage
-      //This is overwriting any existing value stored.
-      echo '<script>localStorage.sessionID = "' . $_SESSION['id'] . '"</script>';
-
-      //Store sessionID (which is equal to userID) in sessionStorage
-      //Makes more sense to store it in sessionStorage - but requirement was localStorage.
-      //echo '<script>sessionStorage.sessionID = "' . $_SESSION['id'] . '"</script>';    
-  }
-
-?>
 
