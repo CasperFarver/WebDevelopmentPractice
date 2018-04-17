@@ -20,6 +20,10 @@ textarea {
   resize: none;
 }
 
+form {
+  margin: 0;
+}
+
 /* Flexbox */
 .flex-container {
   display: flex;

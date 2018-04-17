@@ -27,7 +27,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Tinder 2.0</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -56,69 +56,84 @@
       </div>
     </nav>
 
-    
-    <form class="container flex-container" action="">
-      <div class="flex-rows">
-        <div class="form-group">
-          <img id="img-profile" src="img/placeholder.jpg" alt="profile image">
-          <input type="file" type="file"></input>
-        </div>
+    <div class="container flex-container">
+      </form>
+        <div class="flex-rows">
+          <div class="form-group">
+            <img id="img-profile" src="img/placeholder.jpg" alt="profile image">
+            <input type="file" type="file"></input>
+          </div>
 
-        <div class="form-group">
-          <label for="txt-profile-description">Description</label>
-          <textarea name="profile-description" id="txt-profile-description" class="form-control" cols="30" rows="10">Description...</textarea>
-        </div>
-      </div>
-      <div class="flex-rows">
-        <div class="form-group">
-          <label for="txt-firstName">First name</label>
-          <input id="txt-firstName" class="form-control" type="text" value="first name">
-        </div>
-
-        <div class="form-group">
-          <label for="txt-lastName">Last name</label>
-          <input id="txt-lastName" class="form-control" type="text" value="last name">
-        </div>
-
-        <div class="form-group">
-          <label for="num-age">Age</label>
-          <input id="num-age" class="form-control" type="number" value="25">
-        </div>  
-        
-        <div class="form-group">
-          <label>Gender & Interested in</label>
-          <div id="flex-gender">
-            <select name="sel-gender" class="form-control" id="sel-gender">
-              <option id="opt-gender-firstValue" value="firstOption">Male</option>
-              <option id="opt-gender-secondValue" value="firstOption">Female</option>
-            </select>
-            <select name="sel-interestedIn" class="form-control" id="sel-interestedIn">
-              <option id="opt-interestedIn-firstValue" value="firstOption">Male</option>
-              <option id="opt-interestedIn-secondValue" value="secondOption">Female</option>
-              <option id="opt-interestedIn-thirdValue" value="thirdOption">Both</option>
-            </select>
+          <div class="form-group">
+            <label for="txt-profile-description">Description</label>
+            <textarea name="profile-description" id="txt-profile-description" class="form-control" cols="30" rows="10">Description...</textarea>
           </div>
         </div>
+        
+        <div class="flex-rows">
+          <h5>Profile details</h5>  
+          <div class="form-group">
+            <label for="txt-firstName">First name</label>
+            <input id="txt-firstName" class="form-control" type="text" value="first name">
+          </div>
 
-        <div class="form-group">
-          <label for="num-phuneNumber">Phone number</label>
-          <input id="num-phoneNumber" class="form-control" type="number" value="12345678">
+          <div class="form-group">
+            <label for="txt-lastName">Last name</label>
+            <input id="txt-lastName" class="form-control" type="text" value="last name">
+          </div>
+
+          <div class="form-group">
+            <label for="num-age">Age</label>
+            <input id="num-age" class="form-control" type="number" value="25">
+          </div>  
+          
+          <div class="form-group">
+            <label>Gender & Interested in</label>
+            <div id="flex-gender">
+              <select name="sel-gender" class="form-control" id="sel-gender">
+                <option id="opt-gender-firstValue" value="firstOption">Male</option>
+                <option id="opt-gender-secondValue" value="firstOption">Female</option>
+              </select>
+              <select name="sel-interestedIn" class="form-control" id="sel-interestedIn">
+                <option id="opt-interestedIn-firstValue" value="firstOption">Male</option>
+                <option id="opt-interestedIn-secondValue" value="secondOption">Female</option>
+                <option id="opt-interestedIn-thirdValue" value="thirdOption">Both</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="num-phuneNumber">Phone number</label>
+            <input id="num-phoneNumber" class="form-control" type="number" value="12345678">
+          </div>
+
+          <div class="form-group">
+            <label for="txt-email">Email</label>
+            <input id="txt-email" class="form-control" type="email" value="hans@hansen.dk">
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="form-control btn btn-success">Save</button>
+          </div>
         </div>
-
-        <div class="form-group">
-          <label for="txt-email">Email</label>
-          <input id="txt-email" class="form-control" type="email" value="hans@hansen.dk">
-        </div>
-
-      </div>
-
-      <div class="flex-rows form-group">
-        <button type="button" class="form-control btn btn-primary">Change password</button>
-      </div>
+      </form>
+      
+      <!-- Empty row to make space -->
+      <div class="flex-rows form-group"></div>
+      
       <div id="flex-save" class="flex-rows form-group">
-        <button type="submit" class="form-control btn btn-success">Save</button>
+        <h5>Change password</h5>  
+        <div class="form-group">
+          <label for="txt-password">Password</label>
+          <input id="txt-password" class="form-control" type="password">
+        </div>
+        <div class="form-group">
+          <label for="txt-passwordConfirm">Confirm password</label>
+          <input id="txt-passwordConfirm" class="form-control" type="password">
+        </div>
+        <button type="submit" class="form-control btn btn-primary">Change Password</button>
       </div>
-    </form>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
