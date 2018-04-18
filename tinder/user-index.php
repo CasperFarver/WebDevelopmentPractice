@@ -57,8 +57,8 @@
     </nav>
 
     <div class="container flex-container">
-      </form>
-        <div class="flex-rows">
+      <div class="flex-rows">
+        <form id="frm-updateProfile">
           <div class="form-group">
             <img id="img-profile" src="img/placeholder.jpg" alt="profile image">
             <input type="file" type="file"></input>
@@ -72,6 +72,7 @@
         
         <div class="flex-rows">
           <h5>Profile details</h5>  
+          <input id="txt-username1" name="username" type="hidden" value="">
           <div class="form-group">
             <label for="txt-firstName">First name</label>
             <input id="txt-firstName" class="form-control" type="text" value="first name">
@@ -113,26 +114,32 @@
           </div>
 
           <div class="form-group">
-            <button type="submit" class="form-control btn btn-success">Save</button>
+            <button id="btn-saveProfile-submit" type="submit" class="form-control btn btn-success" disabled>Save</button>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
+      
       
       <!-- Empty row to make space -->
       <div class="flex-rows form-group"></div>
       
+      
       <div id="flex-save" class="flex-rows form-group">
-        <h5>Change password</h5>  
-        <div class="form-group">
-          <label for="txt-password">Password</label>
-          <input id="txt-password" class="form-control" type="password">
-        </div>
-        <div class="form-group">
-          <label for="txt-passwordConfirm">Confirm password</label>
-          <input id="txt-passwordConfirm" class="form-control" type="password">
-        </div>
-        <button type="submit" class="form-control btn btn-primary">Change Password</button>
+        <form id="frm-updatePassword">
+          <h5>Change password</h5>  
+          <input id="txt-username2" name="username" type="hidden" value="">
+          <div class="form-group">
+            <label for="txt-password">Password</label>
+            <input name="password" id="txt-password" class="form-control" type="password">
+          </div>
+          <div class="form-group">
+            <label for="txt-passwordConfirm">Confirm password</label>
+            <input name="passwordConfirm" id="txt-passwordConfirm" class="form-control" type="password">
+          </div>
+          <button type="submit" id="btn-changePassword-submit" class="form-control btn btn-primary" disabled>Change Password</button>
+        </form>
       </div>
+      
     </div>
 
     <!-- Optional JavaScript -->
