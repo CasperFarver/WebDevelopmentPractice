@@ -12,7 +12,7 @@ $(document).ready(function() {
     //Looping through the list of users                
     for (let i = 0; i < data.length; i++) {
       if (sUserID == data[i].id) {
-        console.log(sUserID);   //Only for test
+        //console.log(sUserID);   //Only for test
         
         //Makes link in navbar visible, if imageSet is true
         if (data[i].imageSet == true) {
@@ -41,15 +41,8 @@ $(document).ready(function() {
         $('#txt-firstName').attr("value", data[i].firstName);
         $('#txt-lastName').attr("value", data[i].lastName);
         
-        //Check if female or male
-        if (data[i].gender == 'male') {
-          $('#img-gender').attr("src", "img/male.png");  
-        } else {
-          $('#img-gender').attr("src", "img/female.png");
-        }
-        
         //Check gender - male or female
-        if (data[i].gender == 'male') {
+        if (data[i].gender == 'Male') {
           $('#opt-gender-firstValue').html("<option>Male</option>");
           $('#opt-gender-secondValue').html("<option>Female</option>");
         } else {
@@ -58,11 +51,11 @@ $(document).ready(function() {
         }
         
         //Check interested in - male, female or both
-        if (data[i].interestedIn == 'male') {
+        if (data[i].interestedIn == 'Male') {
           $('#opt-interestedIn-firstValue').html("<option>Male</option>");
           $('#opt-interestedIn-secondValue').html("<option>Female</option>");
           $('#opt-interestedIn-thirdValue').html("<option>Both</option>");  
-        } else if (data[i].interestedIn == 'female') {
+        } else if (data[i].interestedIn == 'Female') {
           $('#opt-interestedIn-firstValue').html("<option>Female</option>");
           $('#opt-interestedIn-secondValue').html("<option>Male</option>");
           $('#opt-interestedIn-thirdValue').html("<option>Both</option>");  
@@ -77,7 +70,7 @@ $(document).ready(function() {
         $('#num-phoneNumber').attr("value", data[i].phoneNumber);
         $('#txt-email').attr("value", data[i].email);
         
-        //Insert username in value for 'txt-username1' input field - It is a hidden field
+        //Insert username in value for 'txt-username2' input field - It is a hidden field
         //Useful for api/update-password.php
         $('#txt-username2').attr("value", data[i].username);
 
@@ -112,10 +105,109 @@ $(document).ready(function() {
     validatePassword();
   });
 
+  //All input fields under 'Profile details'
+  $('#txt-firstName, #txt-lastName, #txt-profile-description, #num-age, #num-phoneNumber').keyup(function() {
+    validateProfile();
+  });
+
+  //Change event for select elements
+  $('#sel-gender, #sel-interestedIn').change(function() {
+    validateProfile();
+  })
+
+
   //FUNCTIONS
   //----------
   //Validate the updated profile details
-  //TODO: function
+  function validateProfile() {
+
+    $.ajax({
+      "method" : "GET",
+      "url" : "../tinder/api/get-users.php",
+      "dataType" : "JSON",
+    }).done(function(data) {
+        
+        //console.log(data);    //Only for test
+
+        //Storing sessionID (which is = to userID) from localStorage into variable
+        var sUserID = localStorage.getItem("sessionID");
+
+        //REGEX
+        //-----
+        //Regex that checks firstName & lastName: only letters and between 2 and 20 characters
+        var nameRegex = /^[a-zA-ZæøåÆØÅ]{2,20}$/;
+        //Regex that check for exactly 8 digits
+        var phoneNumberRegex = /^\d{8}$/;
+        //Regex for age - between 2 and 3 digits
+        var ageRegex = /^\d{2}$/;
+
+        for (let i = 0; i < data.length; i++) {
+          
+          if(data[i].id == sUserID) {
+            
+            //console.log('USER MATCH!');   //Only for test
+
+            //description - Not mandatory, so will always have a green border-color
+            $('#txt-profile-description').css('border-color', 'green');
+
+            //firstName
+            if($('#txt-firstName').val().match(nameRegex)) {
+              $('#txt-firstName').css('border-color', 'green');
+            } else {
+              $('#txt-firstName').css('border-color', 'red');
+            }
+
+            //lastName
+            if($('#txt-lastName').val().match(nameRegex)) {
+              $('#txt-lastName').css('border-color', 'green');
+            } else {
+              $('#txt-lastName').css('border-color', 'red');
+            }
+
+            //age
+            if($('#num-age').val().match(ageRegex) && $('#num-age').val() > 17){
+              $('#num-age').css('border-color', 'green'); 
+            } else {
+              $('#num-age').css('border-color', 'red');
+            }
+
+            //gender
+            if($('#sel-gender').val() !== '') {
+              $('#sel-gender').css('border-color', 'green'); 
+            } else {
+              $('#sel-gender').css('border-color', 'red'); 
+            }
+
+            //interestedIn
+            if($('#sel-interestedIn').val() !== '') {
+              $('#sel-interestedIn').css('border-color', 'green'); 
+            } else {
+              $('#sel-interestedIn').css('border-color', 'red'); 
+            }
+
+            //phoneNumber
+            if($('#num-phoneNumber').val().match(phoneNumberRegex)) {
+              $('#num-phoneNumber').css('border-color', 'green'); 
+            } else {
+              $('#num-phoneNumber').css('border-color', 'red');
+            }
+
+            //Enable submit, whenever a valid change has been made
+            if(($('#txt-firstName').val().match(nameRegex) && $('#txt-lastName').val().match(nameRegex) && $('#num-age').val().match(ageRegex) && $('#num-phoneNumber').val().match(phoneNumberRegex)) && 
+              ($('#txt-profile-description').val() !== data[i].description || $('#txt-firstName').val() !== data[i].firstName || $('#txt-lastName').val() !== data[i].lastName || $('#num-age').val() !== data[i].age
+              || $('#sel-gender option:selected').text() !== data[i].gender || $('#sel-interestedIn option:selected').text() !== data[i].interestedIn || $('#num-phoneNumber').val() !== data[i].phoneNumber)){
+                $('#btn-saveProfile-submit').prop('disabled', false);
+            } else {
+                $('#btn-saveProfile-submit').prop('disabled', true);
+            } 
+          } 
+        }
+
+    }).fail(function() {
+
+    });
+
+  }
   
   //Update Profile informations
   function updateProfile() {
@@ -129,8 +221,46 @@ $(document).ready(function() {
       "dataType" : "JSON", 
     }).done(function(data) {
 
-    }).fail(function(data) {
+      console.log(data);    //Only for test
 
+      if(data.status == 'success') {
+        swal({
+          title : "Success!",
+          text : "Your details have been updated.",
+          icon : "success",
+          button : "Okay"
+        }).then(function() {
+          window.location.href = '../tinder/user-index.php'; 
+        });
+      } else if(data.message == 'Missing required fields') {
+        swal({
+          title : "Error!",
+          text : "You are missing some valid fields",
+          icon : "error",
+          button : "Okay"
+        }).then(function() {
+          window.location.href = '../tinder/user-index.php';
+        }); 
+      } else {
+        swal({
+          title : "Error!",
+          text : "The username does not exist. Please contact an administrator.",
+          icon : "error",
+          button : "Okay"
+        }).then(function() {
+          window.location.href = '../tinder/user-index.php';
+        }); 
+      }
+    }).fail(function(data) {
+        
+        console.log(data);    //Only for test
+      
+        swal({
+          title : "Error!",
+          text : "An error occured in the backend. Please contact an administrator.",
+          icon : "error",
+          button : "Okay"
+        });
     });
   };
 
@@ -176,6 +306,7 @@ $(document).ready(function() {
     }).done(function(data) {
 
       console.log(data);    //Only for test
+      
       if(data.status == 'success') {
         swal({
           title : "Success!",
@@ -185,9 +316,32 @@ $(document).ready(function() {
         }).then(function() {
           window.location.href = '../tinder/user-index.php';
         });
+      } else if(data.message == 'Missing required fields') {
+        swal({
+          title : "Error!",
+          text : "You are missing some valid fields",
+          icon : "error",
+          button : "Okay"
+        }).then(function() {
+          window.location.href = '../tinder/user-index.php';
+        }); 
+      } else {
+        swal({
+          title : "Error!",
+          text : "The username does not exist. Please contact an administrator.",
+          icon : "error",
+          button : "Okay"
+        }).then(function() {
+          window.location.href = '../tinder/user-index.php';
+        });
       }
     }).fail(function(data) {
-
+        swal({
+          title : "Error!",
+          text : "An error occured in the backend. Please contact an administrator.",
+          icon : "error",
+          button : "Okay"
+        });
     });
   };
 

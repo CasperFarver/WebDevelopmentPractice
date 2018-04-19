@@ -219,6 +219,9 @@ $(document).ready(function() {
     //Regex that checks firstName & lastName: only letters and between 2 and 20 characters
     var nameRegex = /^[a-zA-ZæøåÆØÅ]{2,20}$/;
 
+    //Regex for age - between 2 and 3 digits
+    var ageRegex = /^\d{2}$/;
+
     //Regex that check for exactly 8 digits
     var phoneNumberRegex = /^\d{8}$/;
 
@@ -230,6 +233,9 @@ $(document).ready(function() {
 
     //Match 6 to 15 character string with at least one upper case letter, one lower case letter, and one digit
     var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,15}$/;
+
+    //description - Not mandatory, so will always have a green border-color
+    $('#txt-signup-description').css('border-color', 'green');
 
     //firstName
     if($('#input-signup-firstName').val().match(nameRegex)) {
@@ -246,7 +252,7 @@ $(document).ready(function() {
     }
     
     //age - must be  more than 17 years old
-    if($('#input-signup-age').val() > 17) {
+    if($('#input-signup-age').val().match(ageRegex) && $('#input-signup-age').val() > 17) {
       $('#input-signup-age').css('border-color', 'green'); 
     } else {
       $('#input-signup-age').css('border-color', 'red'); 

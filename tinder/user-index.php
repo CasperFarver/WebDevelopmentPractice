@@ -66,7 +66,7 @@
 
           <div class="form-group">
             <label for="txt-profile-description">Description</label>
-            <textarea name="profile-description" id="txt-profile-description" class="form-control" cols="30" rows="10">Description...</textarea>
+            <textarea name="description" id="txt-profile-description" class="form-control" cols="30" rows="8"></textarea>
           </div>
         </div>
         
@@ -75,27 +75,27 @@
           <input id="txt-username1" name="username" type="hidden" value="">
           <div class="form-group">
             <label for="txt-firstName">First name</label>
-            <input id="txt-firstName" class="form-control" type="text" value="first name">
+            <input name="firstName" id="txt-firstName" class="form-control input" type="text" value="first name" required>
           </div>
 
           <div class="form-group">
             <label for="txt-lastName">Last name</label>
-            <input id="txt-lastName" class="form-control" type="text" value="last name">
+            <input name="lastName" id="txt-lastName" class="form-control" type="text" value="last name" required>
           </div>
 
           <div class="form-group">
             <label for="num-age">Age</label>
-            <input id="num-age" class="form-control" type="number" value="25">
+            <input name="age" id="num-age" class="form-control" type="number" value="25" min="18" max="99" required>
           </div>  
           
           <div class="form-group">
             <label>Gender & Interested in</label>
             <div id="flex-gender">
-              <select name="sel-gender" class="form-control" id="sel-gender">
+              <select name="gender" class="form-control" id="sel-gender" required>
                 <option id="opt-gender-firstValue" value="firstOption">Male</option>
                 <option id="opt-gender-secondValue" value="firstOption">Female</option>
               </select>
-              <select name="sel-interestedIn" class="form-control" id="sel-interestedIn">
+              <select name="interestedIn" class="form-control" id="sel-interestedIn" required>
                 <option id="opt-interestedIn-firstValue" value="firstOption">Male</option>
                 <option id="opt-interestedIn-secondValue" value="secondOption">Female</option>
                 <option id="opt-interestedIn-thirdValue" value="thirdOption">Both</option>
@@ -105,12 +105,7 @@
 
           <div class="form-group">
             <label for="num-phuneNumber">Phone number</label>
-            <input id="num-phoneNumber" class="form-control" type="number" value="12345678">
-          </div>
-
-          <div class="form-group">
-            <label for="txt-email">Email</label>
-            <input id="txt-email" class="form-control" type="email" value="hans@hansen.dk">
+            <input name="phoneNumber" id="num-phoneNumber" class="form-control" type="number" value="12345678" min="11111111" max="99999999" required>
           </div>
 
           <div class="form-group">
@@ -130,11 +125,11 @@
           <input id="txt-username2" name="username" type="hidden" value="">
           <div class="form-group">
             <label for="txt-password">Password</label>
-            <input name="password" id="txt-password" class="form-control" type="password">
+            <input name="password" id="txt-password" class="form-control" type="password" required>
           </div>
           <div class="form-group">
             <label for="txt-passwordConfirm">Confirm password</label>
-            <input name="passwordConfirm" id="txt-passwordConfirm" class="form-control" type="password">
+            <input name="passwordConfirm" id="txt-passwordConfirm" class="form-control" type="password" required>
           </div>
           <button type="submit" id="btn-changePassword-submit" class="form-control btn btn-primary" disabled>Change Password</button>
         </form>

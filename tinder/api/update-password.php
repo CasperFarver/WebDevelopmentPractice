@@ -6,15 +6,15 @@
   //Variables from 'frm-updatePassword'
   $sPassword = $_POST['password'];
   $sPasswordConfirm = $_POST['passwordConfirm'];
-  $sUsername = $_POST['username']; //Hidden input field
+  $sUsername = $_POST['username']; //Hidden input field - automatically fetches the value via JS.
 
   //Check if required fields are filled out or not
-  if(!isset($sPassword) || !isset($sPasswordConfirm)) {
-    echo '{"status" : "error", "message" : "Password fields are not filled out"}';
+  if(!isset($sPassword) || !isset($sPasswordConfirm) || !isset($sUsername)) {
+    echo '{"status" : "error", "message" : "Missing required fields"}';
     exit;
   }
 
-  //Open file and decode it from a string to array
+  //Open file of users and decode it from a string to array
   $sajUsers = file_get_contents($sFileName);
   $ajUsers = json_decode($sajUsers);
 
