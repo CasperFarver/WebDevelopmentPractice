@@ -58,12 +58,18 @@
 
     <div class="container flex-container">
       <div class="flex-rows">
-        <form id="frm-updateProfile">
+        <form action="" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <img id="img-profile" src="img/placeholder.jpg" alt="profile image">
-            <input type="file" type="file"></input>
+            <div class="flex-inline">
+              <input type="file" id="imgToUpload" name="imgToUpload" style="display: none;"/>
+              <input type="button" id="btn-browse" class="btn btn-primary form-control" value="Browse..." onclick="document.getElementById('imgToUpload').click();">
+              <button type="submit" class="btn btn-info form-control">Upload</button>
+            </div>
           </div>
+        </form>
 
+        <form id="frm-updateProfile">
           <div class="form-group">
             <label for="txt-profile-description">Description</label>
             <textarea name="description" id="txt-profile-description" class="form-control" cols="30" rows="8"></textarea>
@@ -90,7 +96,7 @@
           
           <div class="form-group">
             <label>Gender & Interested in</label>
-            <div id="flex-gender">
+            <div class="flex-inline">
               <select name="gender" class="form-control" id="sel-gender" required>
                 <option id="opt-gender-firstValue" value="firstOption">Male</option>
                 <option id="opt-gender-secondValue" value="firstOption">Female</option>

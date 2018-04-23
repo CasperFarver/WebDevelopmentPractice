@@ -97,6 +97,12 @@ $(document).ready(function() {
     updatePassword();
   });
 
+  //frm-uploadImage
+  $('#frm-uploadImage').submit(function(event) {
+    event.preventDefault();
+    uploadImage();
+  });
+
 
   //KEYUP
   //----------
@@ -342,6 +348,28 @@ $(document).ready(function() {
           icon : "error",
           button : "Okay"
         });
+    });
+  };
+
+
+  //Upload image
+  function uploadImage() {
+
+    var formData = new FormData($('#frm-uploadImage'));
+
+    $.ajax({
+      "method" : "POST",
+      "url" : "../tinder/api/upload-image.php",
+      "data" : formData,
+      "cache" : false,
+      "contentType" : false,
+      "processData" : false,
+    }).done(function(data) {
+      console.log('success');   //Only for test
+      console.log(data);    //Only for test
+    }).fail(function(data) {
+      console.log('error');   //Only for test
+      console.log(data);    //Only for test
     });
   };
 

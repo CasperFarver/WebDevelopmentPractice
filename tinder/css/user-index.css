@@ -37,15 +37,11 @@ form {
   justify-content: flex-end;
 }
 
-.flex-hori {
-  display: flex;
-}
-
 #flex-save {
   align-self: flex-end; 
 }
 
-#flex-gender {
+.flex-inline {
   display: flex;
   width: 100%;
 }
@@ -63,4 +59,7 @@ form {
   margin-right: 8%;
 }
 
+#btn-browse {
+  margin-right: 8%;
+}
 
