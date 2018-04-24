@@ -58,13 +58,13 @@
 
     <div class="container flex-container">
       <div class="flex-rows">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post" enctype="multipart/form-data" id="frm-imageUpload">
           <div class="form-group">
             <img id="img-profile" src="img/placeholder.jpg" alt="profile image">
             <div class="flex-inline">
               <input type="file" id="imgToUpload" name="imgToUpload" style="display: none;"/>
               <input type="button" id="btn-browse" class="btn btn-primary form-control" value="Browse..." onclick="document.getElementById('imgToUpload').click();">
-              <button type="submit" class="btn btn-info form-control">Upload</button>
+              <input type="button" class="btn btn-info form-control" value="Upload" id="btn-upload"/>
             </div>
           </div>
         </form>

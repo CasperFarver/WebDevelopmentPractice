@@ -97,12 +97,6 @@ $(document).ready(function() {
     updatePassword();
   });
 
-  //frm-uploadImage
-  $('#frm-uploadImage').submit(function(event) {
-    event.preventDefault();
-    uploadImage();
-  });
-
 
   //KEYUP
   //----------
@@ -353,24 +347,27 @@ $(document).ready(function() {
 
 
   //Upload image
-  function uploadImage() {
-
-    var formData = new FormData($('#frm-uploadImage'));
+  $('#btn-upload').click(function() {
+    
+    var fd = new FormData();
+    var files = $('#imgToUpload')[0].files[0];
+    fd.append('imgToUpload',files);
 
     $.ajax({
-      "method" : "POST",
-      "url" : "../tinder/api/upload-image.php",
-      "data" : formData,
-      "cache" : false,
-      "contentType" : false,
-      "processData" : false,
-    }).done(function(data) {
-      console.log('success');   //Only for test
-      console.log(data);    //Only for test
-    }).fail(function(data) {
-      console.log('error');   //Only for test
-      console.log(data);    //Only for test
+      url: '../tinder/api/upload-image.php',
+      type: 'post',
+      data: fd,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        if(response != 0) {
+          $("#img-profile").attr("src", "../tinder/img/" + response);
+        } else {
+          console.log(response);
+          alert('file not uploaded');
+        }
+      },  
     });
-  };
+  });
 
 });

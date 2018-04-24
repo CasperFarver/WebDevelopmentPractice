@@ -1,13 +1,29 @@
 <?php
 //Upload image API
 
-  //Check if data is correct - Is the file set? And is it bigger than the size of 0?
-  if(isset($_FILES['imgToUpload']) && $_FILES['imgToUpload']['size'] > 0){
-    echo '{"status" : "success", "message" : "image is set correctly"}';
+  //Getting file name
+  $sFileName = $_FILES['imgToUpload']['name'];
+
+  //Location
+  $sLocation = "../img/users/" . $sFileName;
+  $iUploadOk = 1;
+  $sImageFileType = pathinfo($sLocation,PATHINFO_EXTENSION);
+
+  //Check image format
+  if($sImageFileType != "jpg" && $sImageFileType != "png" 
+    && $sImageFileType != "jpeg" && $sImageFileType != "gif") {
+      $iUploadOk = 0;
+    }
+
+  if($iUploadOk == 0) {
+    echo 'error 0';
   } else {
-    echo '{"status" : "error", "message" : "image is NOT set correctly"}';
-
-  }
-
+    //Upload file
+    if(move_uploaded_file($_FILES['imgToUpload']['tmp_name'],$sLocation)) {
+      echo $sLocation;
+    } else {
+      echo 0;
+    }
+  }  
 
 ?>
