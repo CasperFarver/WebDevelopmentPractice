@@ -32,6 +32,7 @@ $(document).ready(function() {
         //----------
         //Insert username in value for 'txt-username1' input field - It is a hidden field
         //Useful for api/update-profile.php
+        $('#txt-username0').attr("value", data[i].username);
         $('#txt-username1').attr("value", data[i].username);
         
         //Check if description is set - NOT mandatory
@@ -345,29 +346,42 @@ $(document).ready(function() {
     });
   };
 
-
-  //Upload image
-  $('#btn-upload').click(function() {
-    
-    var fd = new FormData();
-    var files = $('#imgToUpload')[0].files[0];
-    fd.append('imgToUpload',files);
-
+  //On submit for frm-imageUpload
+  $('#frm-imageUpload').on('submit', (function(e) {
+    e.preventDefault();
     $.ajax({
-      url: '../tinder/api/upload-image.php',
-      type: 'post',
-      data: fd,
-      contentType: false,
-      processData: false,
-      success: function(response) {
-        if(response != 0) {
-          $("#img-profile").attr("src", "../tinder/img/" + response);
-        } else {
-          console.log(response);
-          alert('file not uploaded');
-        }
-      },  
+      "url" : "../tinder/api/upload-image.php",
+      "type" : "POST",
+      "data" : new FormData(this),
+      "contentType" : false,
+      "cache" : false,
+      "processData" : false,
+      "dataType" : "JSON",
+    }).done(function(data) {
+        console.log(data);
+    }).fail(function(data) {
+        console.log('error');
+    });  
+  }));
+
+  //Function to preview image after validation
+  $(function() {
+    $('#imgToUpload').change(function() {
+      var file = this.files[0];
+      var imageFile = file.type;
+      var match = ["image/jpeg", "image/png", "image/jpg"];
+      if(!((imageFile == match[0]) || (imageFile == match[1]) || (imageFile == match[2]))) {
+        //TODO: Tell user to select a valid image file 
+      } else {
+        var reader = new FileReader();
+        reader.onload = imageIsLoaded;
+        reader.readAsDataURL(this.files[0]);
+      }  
     });
   });
+
+  function imageIsLoaded(e) {
+    $('#img-profile').attr('src', e.target.result);
+  };
 
 });
