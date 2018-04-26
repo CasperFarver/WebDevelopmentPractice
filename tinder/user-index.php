@@ -57,6 +57,8 @@
     </nav>
 
     <div class="container flex-container">
+      
+      <!-- Row for image and description -->
       <div class="flex-rows">
         <form id="frm-imageUpload" action="" method="post" enctype="multipart/form-data">
           <input id="txt-username0" name="username" type="hidden" value="">
@@ -77,6 +79,7 @@
           </div>
         </div>
         
+        <!-- Row for profile details -->
         <div class="flex-rows">
           <h5>Profile details</h5>  
           <input id="txt-username1" name="username" type="hidden" value="">
@@ -122,10 +125,12 @@
       </div>
       
       
-      <!-- Empty row to make space -->
-      <div class="flex-rows form-group"></div>
+      <!-- Row with 'Delete profile' button -->
+      <div class="flex-rows form-group">
+        <button id="btn-deleteProfile" type="button" class="form-control btn btn-danger">Delete Profile</button>
+      </div>
       
-      
+      <!-- Row for password reset -->
       <div id="flex-save" class="flex-rows form-group">
         <form id="frm-updatePassword">
           <h5>Change password</h5>  

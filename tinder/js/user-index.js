@@ -98,6 +98,74 @@ $(document).ready(function() {
     updatePassword();
   });
 
+  //On submit for frm-imageUpload
+  $('#frm-imageUpload').on('submit', (function(e) {
+    e.preventDefault();
+    $.ajax({
+      "url" : "../tinder/api/upload-image.php",
+      "type" : "POST",
+      "data" : new FormData(this),
+      "contentType" : false,
+      "cache" : false,
+      "processData" : false,
+      "dataType" : "JSON",
+    }).done(function(data) {
+        
+        console.log(data);    //Only for test
+        
+        if(data.status == 'success') {
+          swal({
+            title : "Success!",
+            text : "Your image was successfully uploaded!",
+            icon : "success",
+            button : "Awesome"
+          }).then(function() {
+            window.location.href = '../tinder/user-index.php';
+          });
+        } else if(data.message == 'File already exists') {
+          swal({
+            title : "Error!",
+            text : "Hmm.. An image with that name already exists. Please just try again.",
+            icon : "error",
+            button : "Okay"
+          }).then(function() {
+            window.location.href = '../tinder/user-index.php';
+          });
+        } else if(data.message == 'Username does not exist') {
+          swal({
+            title : "Error!",
+            text : "No user with that username exists!",
+            icon : "error",
+            button : "Okay"
+          }).then(function() {
+            window.location.href = '../tinder/user-index.php';
+          });
+        } else {
+          swal({
+            title : "Error!",
+            text : "You need to upload a valid file. PNG, JPG and JPEG are supported. Maximum 1mb of file size",
+            icon : "error",
+            button : "Okay"
+          }).then(function() {
+            window.location.href = '../tinder/user-index.php';
+          });
+        }
+
+    }).fail(function(data) {
+
+        console.log('error');   //Only for test
+        swal({
+          title : "Error!",
+          text : "An error occured in the backend. Please contact an administrator.",
+          icon : "error",
+          button : "Okay"
+        }).then(function() {
+          window.location.href = '../tinder/user-index.php';
+        });
+
+    });  
+  }));
+
 
   //KEYUP
   //----------
@@ -342,27 +410,12 @@ $(document).ready(function() {
           text : "An error occured in the backend. Please contact an administrator.",
           icon : "error",
           button : "Okay"
+        }).then(function() {
+          window.location.href = '../tinder/user-index.php';
         });
     });
   };
 
-  //On submit for frm-imageUpload
-  $('#frm-imageUpload').on('submit', (function(e) {
-    e.preventDefault();
-    $.ajax({
-      "url" : "../tinder/api/upload-image.php",
-      "type" : "POST",
-      "data" : new FormData(this),
-      "contentType" : false,
-      "cache" : false,
-      "processData" : false,
-      "dataType" : "JSON",
-    }).done(function(data) {
-        console.log(data);
-    }).fail(function(data) {
-        console.log('error');
-    });  
-  }));
 
   //Function to preview image after validation
   $(function() {
@@ -380,8 +433,45 @@ $(document).ready(function() {
     });
   });
 
+  //Function to load image source
   function imageIsLoaded(e) {
     $('#img-profile').attr('src', e.target.result);
   };
+
+
+  //OnClick for 'Delete Profile' button
+  $('#btn-deleteProfile').click(function(event) {
+    event.preventDefault();
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover any saved information!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+        if(willDelete) {
+          
+          console.log(localStorage.getItem("sessionID"));
+          $.ajax({
+            "method" : "POST",
+            "url" : "../tinder/api/delete-user.php",
+            "data" : {sessionID : localStorage.getItem("sessionID")},
+            "dataType" : "JSON",
+          }).done(function(data) {
+            
+            console.log(data);
+
+          }).fail(function(data) {
+            
+          });
+          
+          swal("Very well. Your profile has now been completely deleted!", {
+            icon: "success",
+          }).then(function() {
+            window.location.href = '../tinder';
+          });
+        } 
+    });
+  });
 
 });

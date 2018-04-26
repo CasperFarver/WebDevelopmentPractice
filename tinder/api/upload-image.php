@@ -20,11 +20,12 @@
 
           if(file_exists("../img/users/" . $_FILES['imgToUpload']['name'])) {
 
-            echo '{"status" : "error", "message" : "file: ' . $_FILES['imgToUpload']['name'] . ' already exists"}';
+            echo '{"status" : "error", "message" : "File already exists"}';
           } else {
 
             $sSourcePath = $_FILES['imgToUpload']['tmp_name'];
-            $sTargetPath = "../img/users/" . $_FILES['imgToUpload']['name'];
+            $sImageName = uniqid() . $_FILES['imgToUpload']['name'];
+            $sTargetPath = "../img/users/" . $sImageName;
             move_uploaded_file($sSourcePath, $sTargetPath);
 
             $sFileName = '../txt/users.txt';
@@ -36,14 +37,14 @@
               if($ajUsers[$i]->username == $sUsername) {
 
                 //Set/save image to profile & change imageSet to 'true'
-                $ajUsers[$i]->imageURL = $sTargetPath;
+                $ajUsers[$i]->imageURL = "../tinder/img/users/" . $sImageName;
                 $ajUsers[$i]->imageSet = true;
 
                 //Update array and turn it back into a string
                 $sajUsers = json_encode($ajUsers);
                 file_put_contents($sFileName, $sajUsers);
 
-                echo '{"status" : "success", "message" : "image was uploaded with success"}';
+                echo '{"status" : "success", "message" : "Image was uploaded with success", "imageURL" : "' . $sImageName . '"}';
                 exit;
 
               }
@@ -61,7 +62,7 @@
           }
         }
       } else {
-        echo '{"status" : "error", "message" : "invalid file size or type"}';
+        echo '{"status" : "error", "message" : "Invalid file size or type"}';
       }
 
   }  
