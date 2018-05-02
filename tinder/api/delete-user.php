@@ -13,20 +13,15 @@
     //Check if ID matches
     if($sUserID == $ajUsers[$i]->id) {
 
-      array_slice($ajUsers, 0, 1);
-      
-      $sajUsers = json_encode($ajUsers);
-      file_put_contents($sFileName, $sajUsers);
+      array_splice($ajUsers, $i, 1);
       
       break;
-
     }
-
   }
 
-  
+  $sajUsers = json_encode($ajUsers, JSON_UNESCAPED_UNICODE);
+  file_put_contents($sFileName, $sajUsers);
 
-  echo $sajUsers;
-  exit;
+  echo '{"status" : "success", "message" : "User with id: ' . $sUserID . ' has been deleted."}';
 
 ?>
